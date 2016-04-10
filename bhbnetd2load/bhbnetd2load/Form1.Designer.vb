@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class BHbnetD2Loader
+Partial Class Form_BHbnetD2Loader
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
@@ -22,19 +22,22 @@ Partial Class BHbnetD2Loader
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_BHbnetD2Loader))
         Me.WebBrowser = New System.Windows.Forms.WebBrowser()
         Me.Button_rund2 = New System.Windows.Forms.Button()
         Me.CheckBox_high = New System.Windows.Forms.CheckBox()
         Me.CheckBox_w = New System.Windows.Forms.CheckBox()
         Me.CheckBox_ns = New System.Windows.Forms.CheckBox()
         Me.CheckBox_skiptobnet = New System.Windows.Forms.CheckBox()
-        Me.GroupBox_local = New System.Windows.Forms.GroupBox()
+        Me.GroupBox_locale = New System.Windows.Forms.GroupBox()
         Me.RadioButton_eng = New System.Windows.Forms.RadioButton()
         Me.RadioButton_chi = New System.Windows.Forms.RadioButton()
         Me.GroupBox_canshu = New System.Windows.Forms.GroupBox()
         Me.GroupBox_zidingyicanshu = New System.Windows.Forms.GroupBox()
         Me.TextBox_customVar = New System.Windows.Forms.TextBox()
-        Me.GroupBox_local.SuspendLayout()
+        Me.Button_D2VidTst = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox_locale.SuspendLayout()
         Me.GroupBox_canshu.SuspendLayout()
         Me.GroupBox_zidingyicanshu.SuspendLayout()
         Me.SuspendLayout()
@@ -54,11 +57,11 @@ Partial Class BHbnetD2Loader
         '
         'Button_rund2
         '
-        Me.Button_rund2.Location = New System.Drawing.Point(692, 619)
+        Me.Button_rund2.Location = New System.Drawing.Point(616, 619)
         Me.Button_rund2.Name = "Button_rund2"
         Me.Button_rund2.Size = New System.Drawing.Size(75, 23)
         Me.Button_rund2.TabIndex = 1
-        Me.Button_rund2.Text = "运行"
+        Me.Button_rund2.Text = "运行游戏"
         Me.Button_rund2.UseVisualStyleBackColor = True
         '
         'CheckBox_high
@@ -101,16 +104,16 @@ Partial Class BHbnetD2Loader
         Me.CheckBox_skiptobnet.Text = "直接登录Bnet"
         Me.CheckBox_skiptobnet.UseVisualStyleBackColor = True
         '
-        'GroupBox_local
+        'GroupBox_locale
         '
-        Me.GroupBox_local.Controls.Add(Me.RadioButton_eng)
-        Me.GroupBox_local.Controls.Add(Me.RadioButton_chi)
-        Me.GroupBox_local.Location = New System.Drawing.Point(12, 606)
-        Me.GroupBox_local.Name = "GroupBox_local"
-        Me.GroupBox_local.Size = New System.Drawing.Size(111, 52)
-        Me.GroupBox_local.TabIndex = 9
-        Me.GroupBox_local.TabStop = False
-        Me.GroupBox_local.Text = "语言"
+        Me.GroupBox_locale.Controls.Add(Me.RadioButton_eng)
+        Me.GroupBox_locale.Controls.Add(Me.RadioButton_chi)
+        Me.GroupBox_locale.Location = New System.Drawing.Point(12, 606)
+        Me.GroupBox_locale.Name = "GroupBox_locale"
+        Me.GroupBox_locale.Size = New System.Drawing.Size(111, 52)
+        Me.GroupBox_locale.TabIndex = 9
+        Me.GroupBox_locale.TabStop = False
+        Me.GroupBox_locale.Text = "语言"
         '
         'RadioButton_eng
         '
@@ -150,7 +153,7 @@ Partial Class BHbnetD2Loader
         Me.GroupBox_zidingyicanshu.Controls.Add(Me.TextBox_customVar)
         Me.GroupBox_zidingyicanshu.Location = New System.Drawing.Point(402, 606)
         Me.GroupBox_zidingyicanshu.Name = "GroupBox_zidingyicanshu"
-        Me.GroupBox_zidingyicanshu.Size = New System.Drawing.Size(247, 52)
+        Me.GroupBox_zidingyicanshu.Size = New System.Drawing.Size(207, 52)
         Me.GroupBox_zidingyicanshu.TabIndex = 11
         Me.GroupBox_zidingyicanshu.TabStop = False
         Me.GroupBox_zidingyicanshu.Text = "自定义参数"
@@ -159,29 +162,52 @@ Partial Class BHbnetD2Loader
         '
         Me.TextBox_customVar.Location = New System.Drawing.Point(6, 18)
         Me.TextBox_customVar.Name = "TextBox_customVar"
-        Me.TextBox_customVar.Size = New System.Drawing.Size(235, 21)
+        Me.TextBox_customVar.Size = New System.Drawing.Size(195, 21)
         Me.TextBox_customVar.TabIndex = 1
         '
-        'BHbnetD2Loader
+        'Button_D2VidTst
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Button_D2VidTst.Location = New System.Drawing.Point(697, 619)
+        Me.Button_D2VidTst.Name = "Button_D2VidTst"
+        Me.Button_D2VidTst.Size = New System.Drawing.Size(75, 23)
+        Me.Button_D2VidTst.TabIndex = 2
+        Me.Button_D2VidTst.Text = "测试显卡"
+        Me.Button_D2VidTst.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(671, 651)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(101, 12)
+        Me.Label1.TabIndex = 12
+        Me.Label1.Text = "Ver 0.1 by yjfyy"
+        '
+        'Form_BHbnetD2Loader
+        '
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(784, 672)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Button_D2VidTst)
         Me.Controls.Add(Me.GroupBox_zidingyicanshu)
         Me.Controls.Add(Me.GroupBox_canshu)
-        Me.Controls.Add(Me.GroupBox_local)
+        Me.Controls.Add(Me.GroupBox_locale)
         Me.Controls.Add(Me.Button_rund2)
         Me.Controls.Add(Me.WebBrowser)
-        Me.Name = "BHbnetD2Loader"
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximumSize = New System.Drawing.Size(800, 710)
+        Me.MinimumSize = New System.Drawing.Size(800, 710)
+        Me.Name = "Form_BHbnetD2Loader"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "BHbnetD2Loader"
-        Me.GroupBox_local.ResumeLayout(False)
-        Me.GroupBox_local.PerformLayout()
+        Me.GroupBox_locale.ResumeLayout(False)
+        Me.GroupBox_locale.PerformLayout()
         Me.GroupBox_canshu.ResumeLayout(False)
         Me.GroupBox_canshu.PerformLayout()
         Me.GroupBox_zidingyicanshu.ResumeLayout(False)
         Me.GroupBox_zidingyicanshu.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -191,10 +217,12 @@ Partial Class BHbnetD2Loader
     Friend WithEvents CheckBox_w As CheckBox
     Friend WithEvents CheckBox_ns As CheckBox
     Friend WithEvents CheckBox_skiptobnet As CheckBox
-    Friend WithEvents GroupBox_local As GroupBox
+    Friend WithEvents GroupBox_locale As GroupBox
     Friend WithEvents RadioButton_eng As RadioButton
     Friend WithEvents RadioButton_chi As RadioButton
     Friend WithEvents GroupBox_canshu As GroupBox
     Friend WithEvents GroupBox_zidingyicanshu As GroupBox
     Friend WithEvents TextBox_customVar As TextBox
+    Friend WithEvents Button_D2VidTst As Button
+    Friend WithEvents Label1 As Label
 End Class

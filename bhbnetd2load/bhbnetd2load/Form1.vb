@@ -1,5 +1,5 @@
 ﻿
-Public Class BHbnetD2Loader
+Public Class Form_BHbnetD2Loader
     Private Sub BHbnetD2Loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
@@ -7,7 +7,7 @@ Public Class BHbnetD2Loader
         Try
             Dim path As String
             path = Application.StartupPath + "\BHBnetD2Loader.ini"
-            If GetINI("CFG", "local", "chi", path) = "chi" Then
+            If GetINI("CFG", "locale", "chi", path) = "chi" Then
                 RadioButton_chi.Checked = True
             Else
                 RadioButton_eng.Checked = True
@@ -21,8 +21,8 @@ Public Class BHbnetD2Loader
         Catch ex As Exception
             MsgBox("错误！！！！" & ex.ToString)
         End Try
-
-
+        My.Computer.Registry.CurrentUser.CreateSubKey("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II")
+        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", "tybh.vicp.net")
     End Sub
 
     Private Sub BHbnetD2Loader_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -31,7 +31,15 @@ Public Class BHbnetD2Loader
 
     Private Sub Button_rund2_Click(sender As Object, e As EventArgs) Handles Button_rund2.Click
         savecfg()
+        runCommand()
 
+    End Sub
+    Private Sub Button_D2VidTst_Click(sender As Object, e As EventArgs) Handles Button_D2VidTst.Click
+        Try
+            Shell("D2VidTst.exe", AppWinStyle.NormalFocus)
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 
 
@@ -39,19 +47,55 @@ Public Class BHbnetD2Loader
 
 
     Private Sub runCommand()
+        Dim command As String
         Dim d2loader As String
         Dim local As String
         Dim w As String
         Dim ns As String
-        Dim high As String
         Dim skiptobnet As String
         Dim customVar As String
+        Dim fix As String
 
         If CheckBox_high.Checked Then
-            high = "D2Loader-high.exe"
+            d2loader = "D2Loader-high.exe "
         Else
-            high = "D2Loader-1.13c.exe"
+            d2loader = "D2Loader-1.13c.exe "
         End If
+
+        If RadioButton_chi.Checked Then
+            local = "-locale chi "
+        Else
+            local = "-locale eng "
+        End If
+
+        If CheckBox_w.Checked Then
+            w = "-w "
+        Else
+            w = ""
+        End If
+
+        If CheckBox_ns.Checked Then
+            ns = "-ns "
+        Else
+            ns = ""
+        End If
+
+        If CheckBox_skiptobnet.Checked Then
+            skiptobnet = "-skiptobnet "
+        Else
+            skiptobnet = ""
+        End If
+
+        customVar = TextBox_customVar.Text
+
+        Fix = "-direct "
+
+        command = d2loader + local + w + ns + skiptobnet + customVar + fix
+        Try
+            Shell(command, AppWinStyle.NormalFocus, False, 2000)
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
 
     End Sub
 
@@ -63,9 +107,9 @@ Public Class BHbnetD2Loader
             Dim path As String
             path = Application.StartupPath + "\BHBnetD2Loader.ini"
             If RadioButton_chi.Checked = True Then
-                WriteINI("CFG", "local", "chi", path)
+                WriteINI("CFG", "locale", "chi", path)
             Else
-                WriteINI("CFG", "local", "eng", path)
+                WriteINI("CFG", "locale", "eng", path)
             End If
 
             WriteINI("CFG", "w", CheckBox_w.Checked.ToString, path)

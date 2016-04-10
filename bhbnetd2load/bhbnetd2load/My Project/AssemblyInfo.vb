@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("bhbnetd2load")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("Microsoft")>
+<Assembly: AssemblyCompany("BH")>
 <Assembly: AssemblyProduct("bhbnetd2load")>
-<Assembly: AssemblyCopyright("Copyright © Microsoft 2016")>
+<Assembly: AssemblyCopyright("Copyright © BH 2016")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
