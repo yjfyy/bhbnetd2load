@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class BHbnetD2Loader
     Inherits System.Windows.Forms.Form
 
     'Form 重写 Dispose，以清理组件列表。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,24 +20,23 @@ Partial Class BHbnetD2Loader
     '注意: 以下过程是 Windows 窗体设计器所必需的
     '可以使用 Windows 窗体设计器修改它。  
     '不要使用代码编辑器修改它。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.WebBrowser = New System.Windows.Forms.WebBrowser()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
+        Me.Button_rund2 = New System.Windows.Forms.Button()
+        Me.CheckBox_high = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_w = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_ns = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_skiptobnet = New System.Windows.Forms.CheckBox()
+        Me.GroupBox_local = New System.Windows.Forms.GroupBox()
+        Me.RadioButton_eng = New System.Windows.Forms.RadioButton()
+        Me.RadioButton_chi = New System.Windows.Forms.RadioButton()
+        Me.GroupBox_canshu = New System.Windows.Forms.GroupBox()
+        Me.GroupBox_zidingyicanshu = New System.Windows.Forms.GroupBox()
+        Me.TextBox_customVar = New System.Windows.Forms.TextBox()
+        Me.GroupBox_local.SuspendLayout()
+        Me.GroupBox_canshu.SuspendLayout()
+        Me.GroupBox_zidingyicanshu.SuspendLayout()
         Me.SuspendLayout()
         '
         'WebBrowser
@@ -53,163 +52,149 @@ Partial Class BHbnetD2Loader
         Me.WebBrowser.Url = New System.Uri("http://tybh.vicp.net:81", System.UriKind.Absolute)
         Me.WebBrowser.WebBrowserShortcutsEnabled = False
         '
-        'Button1
+        'Button_rund2
         '
-        Me.Button1.Location = New System.Drawing.Point(692, 619)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "运行"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button_rund2.Location = New System.Drawing.Point(692, 619)
+        Me.Button_rund2.Name = "Button_rund2"
+        Me.Button_rund2.Size = New System.Drawing.Size(75, 23)
+        Me.Button_rund2.TabIndex = 1
+        Me.Button_rund2.Text = "运行"
+        Me.Button_rund2.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'CheckBox_high
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(114, 20)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(48, 16)
-        Me.CheckBox1.TabIndex = 5
-        Me.CheckBox1.Text = "高清"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CheckBox_high.AutoSize = True
+        Me.CheckBox_high.Location = New System.Drawing.Point(114, 20)
+        Me.CheckBox_high.Name = "CheckBox_high"
+        Me.CheckBox_high.Size = New System.Drawing.Size(48, 16)
+        Me.CheckBox_high.TabIndex = 5
+        Me.CheckBox_high.Text = "高清"
+        Me.CheckBox_high.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'CheckBox_w
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(6, 20)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(48, 16)
-        Me.CheckBox2.TabIndex = 6
-        Me.CheckBox2.Text = "窗口"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CheckBox_w.AutoSize = True
+        Me.CheckBox_w.Location = New System.Drawing.Point(6, 20)
+        Me.CheckBox_w.Name = "CheckBox_w"
+        Me.CheckBox_w.Size = New System.Drawing.Size(48, 16)
+        Me.CheckBox_w.TabIndex = 6
+        Me.CheckBox_w.Text = "窗口"
+        Me.CheckBox_w.UseVisualStyleBackColor = True
         '
-        'CheckBox3
+        'CheckBox_ns
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(60, 20)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(48, 16)
-        Me.CheckBox3.TabIndex = 7
-        Me.CheckBox3.Text = "无声"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.CheckBox_ns.AutoSize = True
+        Me.CheckBox_ns.Location = New System.Drawing.Point(60, 20)
+        Me.CheckBox_ns.Name = "CheckBox_ns"
+        Me.CheckBox_ns.Size = New System.Drawing.Size(48, 16)
+        Me.CheckBox_ns.TabIndex = 7
+        Me.CheckBox_ns.Text = "无声"
+        Me.CheckBox_ns.UseVisualStyleBackColor = True
         '
-        'CheckBox4
+        'CheckBox_skiptobnet
         '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(168, 20)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(96, 16)
-        Me.CheckBox4.TabIndex = 8
-        Me.CheckBox4.Text = "直接登录Bnet"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.CheckBox_skiptobnet.AutoSize = True
+        Me.CheckBox_skiptobnet.Location = New System.Drawing.Point(168, 20)
+        Me.CheckBox_skiptobnet.Name = "CheckBox_skiptobnet"
+        Me.CheckBox_skiptobnet.Size = New System.Drawing.Size(96, 16)
+        Me.CheckBox_skiptobnet.TabIndex = 8
+        Me.CheckBox_skiptobnet.Text = "直接登录Bnet"
+        Me.CheckBox_skiptobnet.UseVisualStyleBackColor = True
         '
-        'GroupBox1
+        'GroupBox_local
         '
-        Me.GroupBox1.Controls.Add(Me.RadioButton2)
-        Me.GroupBox1.Controls.Add(Me.RadioButton1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 606)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(111, 52)
-        Me.GroupBox1.TabIndex = 9
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "语言"
+        Me.GroupBox_local.Controls.Add(Me.RadioButton_eng)
+        Me.GroupBox_local.Controls.Add(Me.RadioButton_chi)
+        Me.GroupBox_local.Location = New System.Drawing.Point(12, 606)
+        Me.GroupBox_local.Name = "GroupBox_local"
+        Me.GroupBox_local.Size = New System.Drawing.Size(111, 52)
+        Me.GroupBox_local.TabIndex = 9
+        Me.GroupBox_local.TabStop = False
+        Me.GroupBox_local.Text = "语言"
         '
-        'RadioButton1
+        'RadioButton_eng
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(59, 20)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(47, 16)
-        Me.RadioButton1.TabIndex = 0
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "中文"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.RadioButton_eng.AutoSize = True
+        Me.RadioButton_eng.Location = New System.Drawing.Point(6, 20)
+        Me.RadioButton_eng.Name = "RadioButton_eng"
+        Me.RadioButton_eng.Size = New System.Drawing.Size(47, 16)
+        Me.RadioButton_eng.TabIndex = 1
+        Me.RadioButton_eng.Text = "英文"
+        Me.RadioButton_eng.UseVisualStyleBackColor = True
         '
-        'RadioButton2
+        'RadioButton_chi
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(6, 20)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(47, 16)
-        Me.RadioButton2.TabIndex = 1
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "英文"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.RadioButton_chi.AutoSize = True
+        Me.RadioButton_chi.Location = New System.Drawing.Point(59, 20)
+        Me.RadioButton_chi.Name = "RadioButton_chi"
+        Me.RadioButton_chi.Size = New System.Drawing.Size(47, 16)
+        Me.RadioButton_chi.TabIndex = 0
+        Me.RadioButton_chi.Text = "中文"
+        Me.RadioButton_chi.UseVisualStyleBackColor = True
         '
-        'GroupBox2
+        'GroupBox_canshu
         '
-        Me.GroupBox2.Controls.Add(Me.CheckBox4)
-        Me.GroupBox2.Controls.Add(Me.CheckBox3)
-        Me.GroupBox2.Controls.Add(Me.CheckBox1)
-        Me.GroupBox2.Controls.Add(Me.CheckBox2)
-        Me.GroupBox2.Location = New System.Drawing.Point(129, 606)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(267, 52)
-        Me.GroupBox2.TabIndex = 10
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "参数"
+        Me.GroupBox_canshu.Controls.Add(Me.CheckBox_skiptobnet)
+        Me.GroupBox_canshu.Controls.Add(Me.CheckBox_ns)
+        Me.GroupBox_canshu.Controls.Add(Me.CheckBox_high)
+        Me.GroupBox_canshu.Controls.Add(Me.CheckBox_w)
+        Me.GroupBox_canshu.Location = New System.Drawing.Point(129, 606)
+        Me.GroupBox_canshu.Name = "GroupBox_canshu"
+        Me.GroupBox_canshu.Size = New System.Drawing.Size(267, 52)
+        Me.GroupBox_canshu.TabIndex = 10
+        Me.GroupBox_canshu.TabStop = False
+        Me.GroupBox_canshu.Text = "参数"
         '
-        'GroupBox3
+        'GroupBox_zidingyicanshu
         '
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
-        Me.GroupBox3.Controls.Add(Me.CheckBox5)
-        Me.GroupBox3.Location = New System.Drawing.Point(402, 606)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(247, 52)
-        Me.GroupBox3.TabIndex = 11
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "自定义参数"
+        Me.GroupBox_zidingyicanshu.Controls.Add(Me.TextBox_customVar)
+        Me.GroupBox_zidingyicanshu.Location = New System.Drawing.Point(402, 606)
+        Me.GroupBox_zidingyicanshu.Name = "GroupBox_zidingyicanshu"
+        Me.GroupBox_zidingyicanshu.Size = New System.Drawing.Size(247, 52)
+        Me.GroupBox_zidingyicanshu.TabIndex = 11
+        Me.GroupBox_zidingyicanshu.TabStop = False
+        Me.GroupBox_zidingyicanshu.Text = "自定义参数"
         '
-        'CheckBox5
+        'TextBox_customVar
         '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(6, 20)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(48, 16)
-        Me.CheckBox5.TabIndex = 0
-        Me.CheckBox5.Text = "启用"
-        Me.CheckBox5.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(60, 18)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(181, 21)
-        Me.TextBox1.TabIndex = 1
+        Me.TextBox_customVar.Location = New System.Drawing.Point(6, 18)
+        Me.TextBox_customVar.Name = "TextBox_customVar"
+        Me.TextBox_customVar.Size = New System.Drawing.Size(235, 21)
+        Me.TextBox_customVar.TabIndex = 1
         '
         'BHbnetD2Loader
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(784, 672)
-        Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.GroupBox_zidingyicanshu)
+        Me.Controls.Add(Me.GroupBox_canshu)
+        Me.Controls.Add(Me.GroupBox_local)
+        Me.Controls.Add(Me.Button_rund2)
         Me.Controls.Add(Me.WebBrowser)
         Me.Name = "BHbnetD2Loader"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "BHbnetD2Loader"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
+        Me.GroupBox_local.ResumeLayout(False)
+        Me.GroupBox_local.PerformLayout()
+        Me.GroupBox_canshu.ResumeLayout(False)
+        Me.GroupBox_canshu.PerformLayout()
+        Me.GroupBox_zidingyicanshu.ResumeLayout(False)
+        Me.GroupBox_zidingyicanshu.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents WebBrowser As WebBrowser
-    Friend WithEvents Button1 As Button
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents CheckBox4 As CheckBox
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents CheckBox5 As CheckBox
+    Friend WithEvents Button_rund2 As Button
+    Friend WithEvents CheckBox_high As CheckBox
+    Friend WithEvents CheckBox_w As CheckBox
+    Friend WithEvents CheckBox_ns As CheckBox
+    Friend WithEvents CheckBox_skiptobnet As CheckBox
+    Friend WithEvents GroupBox_local As GroupBox
+    Friend WithEvents RadioButton_eng As RadioButton
+    Friend WithEvents RadioButton_chi As RadioButton
+    Friend WithEvents GroupBox_canshu As GroupBox
+    Friend WithEvents GroupBox_zidingyicanshu As GroupBox
+    Friend WithEvents TextBox_customVar As TextBox
 End Class
