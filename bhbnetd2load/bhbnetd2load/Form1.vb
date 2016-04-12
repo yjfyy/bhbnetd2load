@@ -21,8 +21,7 @@ Public Class Form_BHbnetD2Loader
         End Try
         My.Computer.Registry.CurrentUser.CreateSubKey("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II")
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", "tybh.vicp.net")
-        '检测更新
-        autoupdata()
+
     End Sub
 
     Private Sub BHbnetD2Loader_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -133,14 +132,24 @@ Public Class Form_BHbnetD2Loader
             r_version = dFile.DownloadString("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/version.txt")
         Catch ex As Exception
             r_version = "0"
+            Label_updatazhuangtai.Text = "检测更新超时"
+
         End Try
         If r_version = "0" Then
             Exit Sub
         End If
-        l_version = My.Computer.FileSystem.ReadAllText(".\version.txt")
+        Try
+            l_version = My.Computer.FileSystem.ReadAllText(".\version.txt")
+        Catch ex As Exception
+            l_version = "0"
+            Label_updatazhuangtai.Text = "无法获得本地版本"
+            Exit Sub
+        End Try
 
         If r_version = l_version Then
-
+            Label_updatazhuangtai.Text = "无更新"
+        Else
+            Label_updatazhuangtai.Text = "有更新"
         End If
         dFile.DownloadFile("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/filelist.txt", "c:\a.txt")
     End Sub
@@ -171,4 +180,10 @@ Public Class Form_BHbnetD2Loader
 
 
 
+    Private Sub WebBrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles WebBrowser.DocumentCompleted
+        '检测更新
+        autoupdata()
+        Button_rund2.Text = "运行游戏"
+        Button_rund2.Enabled = True
+    End Sub
 End Class

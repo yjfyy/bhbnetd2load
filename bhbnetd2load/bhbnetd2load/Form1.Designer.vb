@@ -37,6 +37,7 @@ Partial Class Form_BHbnetD2Loader
         Me.TextBox_customVar = New System.Windows.Forms.TextBox()
         Me.Button_D2VidTst = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label_updatazhuangtai = New System.Windows.Forms.Label()
         Me.GroupBox_locale.SuspendLayout()
         Me.GroupBox_canshu.SuspendLayout()
         Me.GroupBox_zidingyicanshu.SuspendLayout()
@@ -57,7 +58,8 @@ Partial Class Form_BHbnetD2Loader
         '
         'Button_rund2
         '
-        Me.Button_rund2.Location = New System.Drawing.Point(756, 622)
+        Me.Button_rund2.Enabled = False
+        Me.Button_rund2.Location = New System.Drawing.Point(615, 623)
         Me.Button_rund2.Name = "Button_rund2"
         Me.Button_rund2.Size = New System.Drawing.Size(86, 23)
         Me.Button_rund2.TabIndex = 1
@@ -167,7 +169,7 @@ Partial Class Form_BHbnetD2Loader
         '
         'Button_D2VidTst
         '
-        Me.Button_D2VidTst.Location = New System.Drawing.Point(632, 623)
+        Me.Button_D2VidTst.Location = New System.Drawing.Point(765, 623)
         Me.Button_D2VidTst.Name = "Button_D2VidTst"
         Me.Button_D2VidTst.Size = New System.Drawing.Size(75, 23)
         Me.Button_D2VidTst.TabIndex = 2
@@ -183,10 +185,20 @@ Partial Class Form_BHbnetD2Loader
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "Ver 0.1 by yjfyy"
         '
+        'Label_updatazhuangtai
+        '
+        Me.Label_updatazhuangtai.AutoSize = True
+        Me.Label_updatazhuangtai.Location = New System.Drawing.Point(634, 655)
+        Me.Label_updatazhuangtai.Name = "Label_updatazhuangtai"
+        Me.Label_updatazhuangtai.Size = New System.Drawing.Size(53, 12)
+        Me.Label_updatazhuangtai.TabIndex = 13
+        Me.Label_updatazhuangtai.Text = "更新状态"
+        '
         'Form_BHbnetD2Loader
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(884, 672)
+        Me.Controls.Add(Me.Label_updatazhuangtai)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button_D2VidTst)
         Me.Controls.Add(Me.GroupBox_zidingyicanshu)
@@ -225,4 +237,5 @@ Partial Class Form_BHbnetD2Loader
     Friend WithEvents TextBox_customVar As TextBox
     Friend WithEvents Button_D2VidTst As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label_updatazhuangtai As Label
 End Class
