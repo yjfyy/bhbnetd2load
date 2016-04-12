@@ -1,8 +1,6 @@
 ﻿
 Public Class Form_BHbnetD2Loader
     Private Sub BHbnetD2Loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
         '读取ini文件
         Try
             Dim path As String
@@ -23,6 +21,8 @@ Public Class Form_BHbnetD2Loader
         End Try
         My.Computer.Registry.CurrentUser.CreateSubKey("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II")
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", "tybh.vicp.net")
+        '检测更新
+        autoupdata()
     End Sub
 
     Private Sub BHbnetD2Loader_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -125,6 +125,26 @@ Public Class Form_BHbnetD2Loader
 
 
 
+    Private Sub autoupdata()
+        Dim dFile As New System.Net.WebClient
+        Dim r_version
+        Dim l_version
+        Try
+            r_version = dFile.DownloadString("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/version.txt")
+        Catch ex As Exception
+            r_version = "0"
+        End Try
+        If r_version = "0" Then
+            Exit Sub
+        End If
+        l_version = My.Computer.FileSystem.ReadAllText(".\version.txt")
+
+        If r_version = l_version Then
+
+        End If
+        dFile.DownloadFile("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/filelist.txt", "c:\a.txt")
+    End Sub
+
 
 
 
@@ -148,6 +168,7 @@ Public Class Form_BHbnetD2Loader
 
     '写ini API函数
     Private Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpString As String, ByVal lpFileName As String) As Int32
+
 
 
 End Class

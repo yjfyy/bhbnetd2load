@@ -57,11 +57,11 @@ Partial Class Form_BHbnetD2Loader
         '
         'Button_rund2
         '
-        Me.Button_rund2.Location = New System.Drawing.Point(728, 622)
+        Me.Button_rund2.Location = New System.Drawing.Point(756, 622)
         Me.Button_rund2.Name = "Button_rund2"
-        Me.Button_rund2.Size = New System.Drawing.Size(75, 23)
+        Me.Button_rund2.Size = New System.Drawing.Size(86, 23)
         Me.Button_rund2.TabIndex = 1
-        Me.Button_rund2.Text = "运行游戏"
+        Me.Button_rund2.Text = "检测更新中"
         Me.Button_rund2.UseVisualStyleBackColor = True
         '
         'CheckBox_high
@@ -167,7 +167,7 @@ Partial Class Form_BHbnetD2Loader
         '
         'Button_D2VidTst
         '
-        Me.Button_D2VidTst.Location = New System.Drawing.Point(615, 622)
+        Me.Button_D2VidTst.Location = New System.Drawing.Point(632, 623)
         Me.Button_D2VidTst.Name = "Button_D2VidTst"
         Me.Button_D2VidTst.Size = New System.Drawing.Size(75, 23)
         Me.Button_D2VidTst.TabIndex = 2
