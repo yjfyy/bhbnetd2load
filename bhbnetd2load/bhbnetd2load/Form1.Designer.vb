@@ -46,18 +46,18 @@ Partial Class Form_BHbnetD2Loader
         '
         Me.WebBrowser.Dock = System.Windows.Forms.DockStyle.Top
         Me.WebBrowser.Location = New System.Drawing.Point(0, 0)
-        Me.WebBrowser.MaximumSize = New System.Drawing.Size(800, 600)
-        Me.WebBrowser.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.WebBrowser.MaximumSize = New System.Drawing.Size(884, 600)
+        Me.WebBrowser.MinimumSize = New System.Drawing.Size(884, 600)
         Me.WebBrowser.Name = "WebBrowser"
-        Me.WebBrowser.Size = New System.Drawing.Size(784, 600)
+        Me.WebBrowser.Size = New System.Drawing.Size(884, 600)
         Me.WebBrowser.TabIndex = 0
         Me.WebBrowser.TabStop = False
-        Me.WebBrowser.Url = New System.Uri("http://tybh.vicp.net:81", System.UriKind.Absolute)
+        Me.WebBrowser.Url = New System.Uri("http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC", System.UriKind.Absolute)
         Me.WebBrowser.WebBrowserShortcutsEnabled = False
         '
         'Button_rund2
         '
-        Me.Button_rund2.Location = New System.Drawing.Point(616, 619)
+        Me.Button_rund2.Location = New System.Drawing.Point(728, 622)
         Me.Button_rund2.Name = "Button_rund2"
         Me.Button_rund2.Size = New System.Drawing.Size(75, 23)
         Me.Button_rund2.TabIndex = 1
@@ -167,7 +167,7 @@ Partial Class Form_BHbnetD2Loader
         '
         'Button_D2VidTst
         '
-        Me.Button_D2VidTst.Location = New System.Drawing.Point(697, 619)
+        Me.Button_D2VidTst.Location = New System.Drawing.Point(615, 622)
         Me.Button_D2VidTst.Name = "Button_D2VidTst"
         Me.Button_D2VidTst.Size = New System.Drawing.Size(75, 23)
         Me.Button_D2VidTst.TabIndex = 2
@@ -177,7 +177,7 @@ Partial Class Form_BHbnetD2Loader
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(671, 651)
+        Me.Label1.Location = New System.Drawing.Point(779, 655)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(101, 12)
         Me.Label1.TabIndex = 12
@@ -186,7 +186,7 @@ Partial Class Form_BHbnetD2Loader
         'Form_BHbnetD2Loader
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(784, 672)
+        Me.ClientSize = New System.Drawing.Size(884, 672)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button_D2VidTst)
         Me.Controls.Add(Me.GroupBox_zidingyicanshu)
@@ -195,8 +195,8 @@ Partial Class Form_BHbnetD2Loader
         Me.Controls.Add(Me.Button_rund2)
         Me.Controls.Add(Me.WebBrowser)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximumSize = New System.Drawing.Size(800, 710)
-        Me.MinimumSize = New System.Drawing.Size(800, 710)
+        Me.MaximumSize = New System.Drawing.Size(900, 710)
+        Me.MinimumSize = New System.Drawing.Size(900, 710)
         Me.Name = "Form_BHbnetD2Loader"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "BHbnetD2Loader"
