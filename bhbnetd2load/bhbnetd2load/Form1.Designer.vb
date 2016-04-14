@@ -41,7 +41,9 @@ Partial Class Form_BHbnetD2Loader
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label_l_version = New System.Windows.Forms.Label()
         Me.Label_r_version = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button_fixgame = New System.Windows.Forms.Button()
+        Me.TextBox_command_fix = New System.Windows.Forms.TextBox()
+        Me.CheckBox_map = New System.Windows.Forms.CheckBox()
         Me.GroupBox_locale.SuspendLayout()
         Me.GroupBox_canshu.SuspendLayout()
         Me.GroupBox_zidingyicanshu.SuspendLayout()
@@ -143,13 +145,14 @@ Partial Class Form_BHbnetD2Loader
         '
         'GroupBox_canshu
         '
+        Me.GroupBox_canshu.Controls.Add(Me.CheckBox_map)
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_skiptobnet)
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_ns)
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_high)
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_w)
         Me.GroupBox_canshu.Location = New System.Drawing.Point(129, 550)
         Me.GroupBox_canshu.Name = "GroupBox_canshu"
-        Me.GroupBox_canshu.Size = New System.Drawing.Size(267, 52)
+        Me.GroupBox_canshu.Size = New System.Drawing.Size(321, 52)
         Me.GroupBox_canshu.TabIndex = 10
         Me.GroupBox_canshu.TabStop = False
         Me.GroupBox_canshu.Text = "参数"
@@ -157,7 +160,7 @@ Partial Class Form_BHbnetD2Loader
         'GroupBox_zidingyicanshu
         '
         Me.GroupBox_zidingyicanshu.Controls.Add(Me.TextBox_customVar)
-        Me.GroupBox_zidingyicanshu.Location = New System.Drawing.Point(402, 550)
+        Me.GroupBox_zidingyicanshu.Location = New System.Drawing.Point(456, 550)
         Me.GroupBox_zidingyicanshu.Name = "GroupBox_zidingyicanshu"
         Me.GroupBox_zidingyicanshu.Size = New System.Drawing.Size(207, 52)
         Me.GroupBox_zidingyicanshu.TabIndex = 11
@@ -173,7 +176,7 @@ Partial Class Form_BHbnetD2Loader
         '
         'Button_D2VidTst
         '
-        Me.Button_D2VidTst.Location = New System.Drawing.Point(634, 567)
+        Me.Button_D2VidTst.Location = New System.Drawing.Point(669, 567)
         Me.Button_D2VidTst.Name = "Button_D2VidTst"
         Me.Button_D2VidTst.Size = New System.Drawing.Size(75, 23)
         Me.Button_D2VidTst.TabIndex = 2
@@ -187,7 +190,7 @@ Partial Class Form_BHbnetD2Loader
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(101, 12)
         Me.Label1.TabIndex = 12
-        Me.Label1.Text = "Ver 0.1 by yjfyy"
+        Me.Label1.Text = "Ver 0.4 by yjfyy"
         '
         'Label2
         '
@@ -225,20 +228,39 @@ Partial Class Form_BHbnetD2Loader
         Me.Label_r_version.TabIndex = 17
         Me.Label_r_version.Text = "0"
         '
-        'Button1
+        'Button_fixgame
         '
-        Me.Button1.Location = New System.Drawing.Point(743, 567)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(93, 23)
-        Me.Button1.TabIndex = 18
-        Me.Button1.Text = "强制修复游戏"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button_fixgame.Location = New System.Drawing.Point(750, 567)
+        Me.Button_fixgame.Name = "Button_fixgame"
+        Me.Button_fixgame.Size = New System.Drawing.Size(75, 23)
+        Me.Button_fixgame.TabIndex = 18
+        Me.Button_fixgame.Text = "修复游戏"
+        Me.Button_fixgame.UseVisualStyleBackColor = True
+        '
+        'TextBox_command_fix
+        '
+        Me.TextBox_command_fix.Location = New System.Drawing.Point(12, 639)
+        Me.TextBox_command_fix.Name = "TextBox_command_fix"
+        Me.TextBox_command_fix.Size = New System.Drawing.Size(267, 21)
+        Me.TextBox_command_fix.TabIndex = 19
+        Me.TextBox_command_fix.Visible = False
+        '
+        'CheckBox_map
+        '
+        Me.CheckBox_map.AutoSize = True
+        Me.CheckBox_map.Location = New System.Drawing.Point(270, 20)
+        Me.CheckBox_map.Name = "CheckBox_map"
+        Me.CheckBox_map.Size = New System.Drawing.Size(48, 16)
+        Me.CheckBox_map.TabIndex = 9
+        Me.CheckBox_map.Text = "插件"
+        Me.CheckBox_map.UseVisualStyleBackColor = True
         '
         'Form_BHbnetD2Loader
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(884, 672)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TextBox_command_fix)
+        Me.Controls.Add(Me.Button_fixgame)
         Me.Controls.Add(Me.Label_r_version)
         Me.Controls.Add(Me.Label_l_version)
         Me.Controls.Add(Me.Label3)
@@ -287,5 +309,7 @@ Partial Class Form_BHbnetD2Loader
     Friend WithEvents Label3 As Label
     Friend WithEvents Label_l_version As Label
     Friend WithEvents Label_r_version As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Button_fixgame As Button
+    Friend WithEvents TextBox_command_fix As TextBox
+    Friend WithEvents CheckBox_map As CheckBox
 End Class

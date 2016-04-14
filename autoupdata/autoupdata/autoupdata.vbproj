@@ -113,6 +113,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="updata.rar" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Rar.exe">
