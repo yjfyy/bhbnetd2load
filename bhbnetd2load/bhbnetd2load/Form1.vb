@@ -21,7 +21,6 @@ Public Class Form_BHbnetD2Loader
         End Try
         My.Computer.Registry.CurrentUser.CreateSubKey("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II")
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", "tybh.vicp.net")
-
     End Sub
 
     Private Sub BHbnetD2Loader_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -30,7 +29,12 @@ Public Class Form_BHbnetD2Loader
 
     Private Sub Button_rund2_Click(sender As Object, e As EventArgs) Handles Button_rund2.Click
         savecfg()
-        runCommand()
+        If Button_rund2.Text = "运行游戏" Then
+            runCommand()
+        Else
+            runautoupdata()
+        End If
+
 
     End Sub
     Private Sub Button_D2VidTst_Click(sender As Object, e As EventArgs) Handles Button_D2VidTst.Click
@@ -41,7 +45,11 @@ Public Class Form_BHbnetD2Loader
         End Try
     End Sub
 
+    Private Sub runautoupdata()
 
+        Shell(".\autoupdata\autoupdata.exe", AppWinStyle.NormalFocus)
+        Close()
+    End Sub
 
 
 
@@ -122,44 +130,6 @@ Public Class Form_BHbnetD2Loader
         End Try
     End Sub
 
-
-
-    Private Sub autoupdata()
-        Dim dFile As New System.Net.WebClient
-        Dim r_version
-        Dim l_version
-        Try
-            r_version = dFile.DownloadString("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/version.txt")
-        Catch ex As Exception
-            r_version = "0"
-            Label_updatazhuangtai.Text = "检测更新超时"
-
-        End Try
-        If r_version = "0" Then
-            Exit Sub
-        End If
-        Try
-            l_version = My.Computer.FileSystem.ReadAllText(".\version.txt")
-        Catch ex As Exception
-            l_version = "0"
-            Label_updatazhuangtai.Text = "无法获得本地版本"
-            Exit Sub
-        End Try
-
-        If r_version = l_version Then
-            Label_updatazhuangtai.Text = "无更新"
-        Else
-            Label_updatazhuangtai.Text = "有更新"
-        End If
-        dFile.DownloadFile("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/filelist.txt", "c:\a.txt")
-    End Sub
-
-
-
-
-
-
-
     '读取ini文件内容
     Public Function GetINI(ByVal Section As String, ByVal AppName As String, ByVal lpDefault As String, ByVal FileName As String) As String
         Dim Str As String = LSet(Str, 256)
@@ -179,11 +149,36 @@ Public Class Form_BHbnetD2Loader
     Private Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpString As String, ByVal lpFileName As String) As Int32
 
 
-
     Private Sub WebBrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles WebBrowser.DocumentCompleted
-        '检测更新
-        autoupdata()
-        Button_rund2.Text = "运行游戏"
+        '打开网页后检测更新
+        Dim dFile As New System.Net.WebClient
+        Dim r_version = "0"
+        Dim l_version = "0"
+        Try
+            l_version = My.Computer.FileSystem.ReadAllText(".\version.txt")
+            Label_l_version.Text = l_version
+        Catch ex As Exception
+            If l_version = "0" Then
+                Label_r_version.Text = "无法获得本地版本"
+                MsgBox("无法获得本地版本,推荐修复游戏")
+            End If
+        End Try
+
+        Try
+            r_version = dFile.DownloadString("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/version.txt")
+        Catch ex As Exception
+            If r_version = "0" Then
+                Label_r_version.Text = "检测超时"
+            End If
+
+        End Try
+        Label_r_version.Text = r_version
+        If r_version = l_version And l_version <> "0" Then
+            Button_rund2.Text = "运行游戏"
+        Else
+            Button_rund2.Text = "更新游戏"
+        End If
         Button_rund2.Enabled = True
+
     End Sub
 End Class

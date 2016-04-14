@@ -37,7 +37,11 @@ Partial Class Form_BHbnetD2Loader
         Me.TextBox_customVar = New System.Windows.Forms.TextBox()
         Me.Button_D2VidTst = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label_updatazhuangtai = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label_l_version = New System.Windows.Forms.Label()
+        Me.Label_r_version = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox_locale.SuspendLayout()
         Me.GroupBox_canshu.SuspendLayout()
         Me.GroupBox_zidingyicanshu.SuspendLayout()
@@ -47,10 +51,10 @@ Partial Class Form_BHbnetD2Loader
         '
         Me.WebBrowser.Dock = System.Windows.Forms.DockStyle.Top
         Me.WebBrowser.Location = New System.Drawing.Point(0, 0)
-        Me.WebBrowser.MaximumSize = New System.Drawing.Size(884, 600)
-        Me.WebBrowser.MinimumSize = New System.Drawing.Size(884, 600)
+        Me.WebBrowser.MaximumSize = New System.Drawing.Size(884, 540)
+        Me.WebBrowser.MinimumSize = New System.Drawing.Size(884, 540)
         Me.WebBrowser.Name = "WebBrowser"
-        Me.WebBrowser.Size = New System.Drawing.Size(884, 600)
+        Me.WebBrowser.Size = New System.Drawing.Size(884, 540)
         Me.WebBrowser.TabIndex = 0
         Me.WebBrowser.TabStop = False
         Me.WebBrowser.Url = New System.Uri("http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC", System.UriKind.Absolute)
@@ -59,7 +63,7 @@ Partial Class Form_BHbnetD2Loader
         'Button_rund2
         '
         Me.Button_rund2.Enabled = False
-        Me.Button_rund2.Location = New System.Drawing.Point(615, 623)
+        Me.Button_rund2.Location = New System.Drawing.Point(402, 608)
         Me.Button_rund2.Name = "Button_rund2"
         Me.Button_rund2.Size = New System.Drawing.Size(86, 23)
         Me.Button_rund2.TabIndex = 1
@@ -110,7 +114,7 @@ Partial Class Form_BHbnetD2Loader
         '
         Me.GroupBox_locale.Controls.Add(Me.RadioButton_eng)
         Me.GroupBox_locale.Controls.Add(Me.RadioButton_chi)
-        Me.GroupBox_locale.Location = New System.Drawing.Point(12, 606)
+        Me.GroupBox_locale.Location = New System.Drawing.Point(12, 550)
         Me.GroupBox_locale.Name = "GroupBox_locale"
         Me.GroupBox_locale.Size = New System.Drawing.Size(111, 52)
         Me.GroupBox_locale.TabIndex = 9
@@ -143,7 +147,7 @@ Partial Class Form_BHbnetD2Loader
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_ns)
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_high)
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_w)
-        Me.GroupBox_canshu.Location = New System.Drawing.Point(129, 606)
+        Me.GroupBox_canshu.Location = New System.Drawing.Point(129, 550)
         Me.GroupBox_canshu.Name = "GroupBox_canshu"
         Me.GroupBox_canshu.Size = New System.Drawing.Size(267, 52)
         Me.GroupBox_canshu.TabIndex = 10
@@ -153,7 +157,7 @@ Partial Class Form_BHbnetD2Loader
         'GroupBox_zidingyicanshu
         '
         Me.GroupBox_zidingyicanshu.Controls.Add(Me.TextBox_customVar)
-        Me.GroupBox_zidingyicanshu.Location = New System.Drawing.Point(402, 606)
+        Me.GroupBox_zidingyicanshu.Location = New System.Drawing.Point(402, 550)
         Me.GroupBox_zidingyicanshu.Name = "GroupBox_zidingyicanshu"
         Me.GroupBox_zidingyicanshu.Size = New System.Drawing.Size(207, 52)
         Me.GroupBox_zidingyicanshu.TabIndex = 11
@@ -169,7 +173,7 @@ Partial Class Form_BHbnetD2Loader
         '
         'Button_D2VidTst
         '
-        Me.Button_D2VidTst.Location = New System.Drawing.Point(765, 623)
+        Me.Button_D2VidTst.Location = New System.Drawing.Point(634, 567)
         Me.Button_D2VidTst.Name = "Button_D2VidTst"
         Me.Button_D2VidTst.Size = New System.Drawing.Size(75, 23)
         Me.Button_D2VidTst.TabIndex = 2
@@ -179,26 +183,66 @@ Partial Class Form_BHbnetD2Loader
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(779, 655)
+        Me.Label1.Location = New System.Drawing.Point(771, 651)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(101, 12)
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "Ver 0.1 by yjfyy"
         '
-        'Label_updatazhuangtai
+        'Label2
         '
-        Me.Label_updatazhuangtai.AutoSize = True
-        Me.Label_updatazhuangtai.Location = New System.Drawing.Point(634, 655)
-        Me.Label_updatazhuangtai.Name = "Label_updatazhuangtai"
-        Me.Label_updatazhuangtai.Size = New System.Drawing.Size(53, 12)
-        Me.Label_updatazhuangtai.TabIndex = 13
-        Me.Label_updatazhuangtai.Text = "更新状态"
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(337, 646)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(59, 12)
+        Me.Label2.TabIndex = 14
+        Me.Label2.Text = "本地版本:"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(475, 646)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(59, 12)
+        Me.Label3.TabIndex = 15
+        Me.Label3.Text = "远端版本:"
+        '
+        'Label_l_version
+        '
+        Me.Label_l_version.AutoSize = True
+        Me.Label_l_version.Location = New System.Drawing.Point(400, 646)
+        Me.Label_l_version.Name = "Label_l_version"
+        Me.Label_l_version.Size = New System.Drawing.Size(11, 12)
+        Me.Label_l_version.TabIndex = 16
+        Me.Label_l_version.Text = "0"
+        '
+        'Label_r_version
+        '
+        Me.Label_r_version.AutoSize = True
+        Me.Label_r_version.Location = New System.Drawing.Point(540, 646)
+        Me.Label_r_version.Name = "Label_r_version"
+        Me.Label_r_version.Size = New System.Drawing.Size(11, 12)
+        Me.Label_r_version.TabIndex = 17
+        Me.Label_r_version.Text = "0"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(743, 567)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(93, 23)
+        Me.Button1.TabIndex = 18
+        Me.Button1.Text = "强制修复游戏"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Form_BHbnetD2Loader
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(884, 672)
-        Me.Controls.Add(Me.Label_updatazhuangtai)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Label_r_version)
+        Me.Controls.Add(Me.Label_l_version)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button_D2VidTst)
         Me.Controls.Add(Me.GroupBox_zidingyicanshu)
@@ -207,7 +251,9 @@ Partial Class Form_BHbnetD2Loader
         Me.Controls.Add(Me.Button_rund2)
         Me.Controls.Add(Me.WebBrowser)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(900, 710)
+        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(900, 710)
         Me.Name = "Form_BHbnetD2Loader"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -237,5 +283,9 @@ Partial Class Form_BHbnetD2Loader
     Friend WithEvents TextBox_customVar As TextBox
     Friend WithEvents Button_D2VidTst As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label_updatazhuangtai As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label_l_version As Label
+    Friend WithEvents Label_r_version As Label
+    Friend WithEvents Button1 As Button
 End Class
