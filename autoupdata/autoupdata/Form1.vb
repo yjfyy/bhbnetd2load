@@ -2,35 +2,45 @@
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ProgressBar1.Value = 10
         Dim dFile As New System.Net.WebClient
         '下载更新列表
-
         '打开网页后检测更新
 
-        Dim r_version = "0"
-        Dim l_version = "0"
         Try
-            dFile.DownloadFile("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/filelist.txt", "filelist.txt")
+            dFile.DownloadFile("http://tybh.vicp.net:81/downloads/d2updata.rar", "d2updata.rar")
+            'dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/d2updata.rar", "d2updata.rar")
+            ProgressBar1.Value = 60
         Catch ex As Exception
-
+            MsgBox("d2updata.rar下载失败请重试")
+            Exit Sub
         End Try
-
         Try
-            r_version = dFile.DownloadString("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/version.txt")
+            ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
+            dFile.DownloadFile("http://tybh.vicp.net:81/downloads/updata.rar", "updata.bat")
+            ProgressBar1.Value = 70
         Catch ex As Exception
-            If r_version = "0" Then
-                Label_r_version.Text = "检测超时"
-            End If
-
+            MsgBox("updata.bat下载失败请重试")
+            Exit Sub
         End Try
-        Label_r_version.Text = r_version
-        If r_version = l_version And l_version <> "0" Then
-            Button_rund2.Text = "运行游戏"
-        Else
-            Button_rund2.Text = "更新游戏"
-        End If
-        Button_rund2.Enabled = True
-        'dFile.DownloadFile("https://raw.githubusercontent.com/yjfyy/bhbnetd2load/master/autoupdata/filelist.txt", "c:\a.txt")
+        Shell("updata.bat", AppWinStyle.Hide)
+        ProgressBar1.Value = 100
+        MsgBox("升级成功")
     End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+
+
+    End Sub
+
+    Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Try
+            My.Computer.FileSystem.DeleteFile("updata.bat")
+        Catch ex As Exception
+
+        End Try
+        Shell("暗黑II BH战网.exe", AppWinStyle.NormalFocus)
     End Sub
 End Class
