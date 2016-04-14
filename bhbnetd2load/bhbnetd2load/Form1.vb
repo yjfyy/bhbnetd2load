@@ -47,7 +47,7 @@ Public Class Form_BHbnetD2Loader
 
     Private Sub runautoupdata()
 
-        Shell(".\autoupdata\autoupdata.exe", AppWinStyle.NormalFocus)
+        Shell("autoupdata.exe", AppWinStyle.NormalFocus)
         Close()
     End Sub
 
