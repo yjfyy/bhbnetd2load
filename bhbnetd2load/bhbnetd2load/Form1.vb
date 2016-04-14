@@ -181,4 +181,8 @@ Public Class Form_BHbnetD2Loader
         Button_rund2.Enabled = True
 
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        runautoupdata()
+    End Sub
 End Class
