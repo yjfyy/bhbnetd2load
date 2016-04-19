@@ -22,40 +22,53 @@ Partial Class Form1
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button_updata = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
-        'Button1
+        'Button_updata
         '
-        Me.Button1.Location = New System.Drawing.Point(356, 57)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "开始更新"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button_updata.Location = New System.Drawing.Point(298, 12)
+        Me.Button_updata.Name = "Button_updata"
+        Me.Button_updata.Size = New System.Drawing.Size(75, 23)
+        Me.Button_updata.TabIndex = 0
+        Me.Button_updata.Text = "开始更新"
+        Me.Button_updata.UseVisualStyleBackColor = True
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(41, 57)
+        Me.ProgressBar1.Location = New System.Drawing.Point(12, 12)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(280, 23)
         Me.ProgressBar1.TabIndex = 1
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Enabled = False
+        Me.TextBox1.Location = New System.Drawing.Point(12, 41)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(361, 265)
+        Me.TextBox1.TabIndex = 2
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(536, 148)
+        Me.ClientSize = New System.Drawing.Size(388, 319)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.ProgressBar1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Button_updata)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form1"
+        Me.Text = "BH战网升级工具"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Button_updata As Button
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents TextBox1 As TextBox
 End Class

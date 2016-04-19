@@ -6,6 +6,9 @@ Public Class Form_BHbnetD2Loader
         load_ini()
         '设置注册表
         set_reg()
+        '更新autoupdata
+        up_autoupdata()
+
     End Sub
 
     Private Sub BHbnetD2Loader_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -200,6 +203,16 @@ Public Class Form_BHbnetD2Loader
         My.Computer.Registry.CurrentUser.CreateSubKey("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II")
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", "tybh.vicp.net")
     End Sub
+    Private Sub up_autoupdata()
 
+        If My.Computer.FileSystem.FileExists("autoupdata.rar") Then
+            Try
+                My.Computer.FileSystem.DeleteFile("autoupdata.exe")
+                My.Computer.FileSystem.RenameFile("autoupdata.rar", "autoupdata.exe")
+            Catch ex As Exception
+
+            End Try
+        End If
+    End Sub
 
 End Class

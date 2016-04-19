@@ -33,6 +33,7 @@ Partial Class Form_BHbnetD2Loader
         Me.RadioButton_eng = New System.Windows.Forms.RadioButton()
         Me.RadioButton_chi = New System.Windows.Forms.RadioButton()
         Me.GroupBox_canshu = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_map = New System.Windows.Forms.CheckBox()
         Me.GroupBox_zidingyicanshu = New System.Windows.Forms.GroupBox()
         Me.TextBox_customVar = New System.Windows.Forms.TextBox()
         Me.Button_D2VidTst = New System.Windows.Forms.Button()
@@ -43,7 +44,6 @@ Partial Class Form_BHbnetD2Loader
         Me.Label_r_version = New System.Windows.Forms.Label()
         Me.Button_fixgame = New System.Windows.Forms.Button()
         Me.TextBox_command_fix = New System.Windows.Forms.TextBox()
-        Me.CheckBox_map = New System.Windows.Forms.CheckBox()
         Me.GroupBox_locale.SuspendLayout()
         Me.GroupBox_canshu.SuspendLayout()
         Me.GroupBox_zidingyicanshu.SuspendLayout()
@@ -157,6 +157,16 @@ Partial Class Form_BHbnetD2Loader
         Me.GroupBox_canshu.TabStop = False
         Me.GroupBox_canshu.Text = "参数"
         '
+        'CheckBox_map
+        '
+        Me.CheckBox_map.AutoSize = True
+        Me.CheckBox_map.Location = New System.Drawing.Point(270, 20)
+        Me.CheckBox_map.Name = "CheckBox_map"
+        Me.CheckBox_map.Size = New System.Drawing.Size(48, 16)
+        Me.CheckBox_map.TabIndex = 9
+        Me.CheckBox_map.Text = "插件"
+        Me.CheckBox_map.UseVisualStyleBackColor = True
+        '
         'GroupBox_zidingyicanshu
         '
         Me.GroupBox_zidingyicanshu.Controls.Add(Me.TextBox_customVar)
@@ -190,7 +200,7 @@ Partial Class Form_BHbnetD2Loader
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(101, 12)
         Me.Label1.TabIndex = 12
-        Me.Label1.Text = "Ver 0.4 by yjfyy"
+        Me.Label1.Text = "Ver 0.5 by yjfyy"
         '
         'Label2
         '
@@ -244,16 +254,6 @@ Partial Class Form_BHbnetD2Loader
         Me.TextBox_command_fix.Size = New System.Drawing.Size(267, 21)
         Me.TextBox_command_fix.TabIndex = 19
         Me.TextBox_command_fix.Visible = False
-        '
-        'CheckBox_map
-        '
-        Me.CheckBox_map.AutoSize = True
-        Me.CheckBox_map.Location = New System.Drawing.Point(270, 20)
-        Me.CheckBox_map.Name = "CheckBox_map"
-        Me.CheckBox_map.Size = New System.Drawing.Size(48, 16)
-        Me.CheckBox_map.TabIndex = 9
-        Me.CheckBox_map.Text = "插件"
-        Me.CheckBox_map.UseVisualStyleBackColor = True
         '
         'Form_BHbnetD2Loader
         '
