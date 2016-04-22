@@ -59,31 +59,31 @@ Public Class Form_BHbnetD2Loader
         End If
 
         If RadioButton_chi.Checked Then
-            local = "-locale chi "
+            local = " -locale chi"
         Else
-            local = "-locale eng "
+            local = " -locale eng"
         End If
 
         If CheckBox_w.Checked Then
-            w = "-w "
+            w = " -w"
         Else
             w = ""
         End If
 
         If CheckBox_ns.Checked Then
-            ns = "-ns "
+            ns = " -ns"
         Else
             ns = ""
         End If
 
         If CheckBox_skiptobnet.Checked Then
-            skiptobnet = "-skiptobnet "
+            skiptobnet = " -skiptobnet"
         Else
             skiptobnet = ""
         End If
 
         If CheckBox_map.Checked Then
-            map = "-pdir bh113map "
+            map = " -pdir bh113map"
         Else
             map = ""
         End If
@@ -92,7 +92,7 @@ Public Class Form_BHbnetD2Loader
 
         fix = TextBox_command_fix.Text
 
-        d2run_command = d2loader + local + w + ns + skiptobnet + map + customVar + fix
+        d2run_command = d2loader + local + w + ns + skiptobnet + map + " " + customVar + " " + fix
         Try
             'MsgBox(d2run_command)
             Shell(d2run_command, AppWinStyle.NormalFocus, False)
@@ -192,7 +192,7 @@ Public Class Form_BHbnetD2Loader
             If TextBox_customVar.Text = "null" Then
                 TextBox_customVar.Text = ""
             End If
-            TextBox_command_fix.Text = GetINI("cfg", "command_fix", " -direct -pdir bh113map -nofixaspect -nohide -txt", path)
+            TextBox_command_fix.Text = GetINI("cfg", "command_fix", "-direct -pdir bh113map -nofixaspect -nohide -txt", path)
             upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
             CheckBox_map.Checked = GetINI("CFG", "map", "True", path)
         Catch ex As Exception
