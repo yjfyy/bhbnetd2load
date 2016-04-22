@@ -59,7 +59,7 @@ Partial Class Form_BHbnetD2Loader
         Me.WebBrowser.Size = New System.Drawing.Size(884, 540)
         Me.WebBrowser.TabIndex = 0
         Me.WebBrowser.TabStop = False
-        Me.WebBrowser.Url = New System.Uri("http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC", System.UriKind.Absolute)
+        Me.WebBrowser.Url = New System.Uri("", System.UriKind.Relative)
         Me.WebBrowser.WebBrowserShortcutsEnabled = False
         '
         'Button_rund2
@@ -200,7 +200,7 @@ Partial Class Form_BHbnetD2Loader
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(101, 12)
         Me.Label1.TabIndex = 12
-        Me.Label1.Text = "Ver 0.5 by yjfyy"
+        Me.Label1.Text = "Ver 0.7 by yjfyy"
         '
         'Label2
         '

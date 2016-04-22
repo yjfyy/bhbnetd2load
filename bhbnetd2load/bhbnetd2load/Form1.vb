@@ -1,6 +1,7 @@
 ﻿
 Public Class Form_BHbnetD2Loader
     Public upsrc As String
+    Public url As String
     Private Sub BHbnetD2Loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '读取ini文件
         load_ini()
@@ -8,7 +9,7 @@ Public Class Form_BHbnetD2Loader
         set_reg()
         '更新autoupdata
         up_autoupdata()
-
+        WebBrowser.Url = New Uri(url)
     End Sub
 
     Private Sub BHbnetD2Loader_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -38,6 +39,10 @@ Public Class Form_BHbnetD2Loader
     End Sub
 
     Private Sub Button_fixgame_Click(sender As Object, e As EventArgs) Handles Button_fixgame.Click
+        Try
+            My.Computer.FileSystem.DeleteFile("暗黑II BH战网.ini")
+        Catch ex As Exception
+        End Try
         runautoupdata()
     End Sub
 
@@ -59,31 +64,31 @@ Public Class Form_BHbnetD2Loader
         End If
 
         If RadioButton_chi.Checked Then
-            local = "-locale chi "
+            local = " -locale chi"
         Else
-            local = "-locale eng "
+            local = " -locale eng"
         End If
 
         If CheckBox_w.Checked Then
-            w = "-w "
+            w = " -w"
         Else
             w = ""
         End If
 
         If CheckBox_ns.Checked Then
-            ns = "-ns "
+            ns = " -ns"
         Else
             ns = ""
         End If
 
         If CheckBox_skiptobnet.Checked Then
-            skiptobnet = "-skiptobnet "
+            skiptobnet = " -skiptobnet"
         Else
             skiptobnet = ""
         End If
 
         If CheckBox_map.Checked Then
-            map = "-pdir bh113map "
+            map = " -pdir bh113map"
         Else
             map = ""
         End If
@@ -92,7 +97,7 @@ Public Class Form_BHbnetD2Loader
 
         fix = TextBox_command_fix.Text
 
-        d2run_command = d2loader + local + w + ns + skiptobnet + map + customVar + fix
+        d2run_command = d2loader + local + w + ns + skiptobnet + map + " " + customVar + " " + fix
         Try
             'MsgBox(d2run_command)
             Shell(d2run_command, AppWinStyle.NormalFocus, False)
@@ -119,6 +124,7 @@ Public Class Form_BHbnetD2Loader
             WriteINI("CFG", "customVar", TextBox_customVar.Text, path)
             WriteINI("cfg", "command_fix", " -direct -nofixaspect -nohide -txt", path)
             WriteINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
+            WriteINI("CFG", "url", "http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC", path)
             WriteINI("CFG", "map", CheckBox_map.Checked.ToString, path)
         Catch ex As Exception
 
@@ -192,8 +198,9 @@ Public Class Form_BHbnetD2Loader
             If TextBox_customVar.Text = "null" Then
                 TextBox_customVar.Text = ""
             End If
-            TextBox_command_fix.Text = GetINI("cfg", "command_fix", " -direct -pdir bh113map -nofixaspect -nohide -txt", path)
+            TextBox_command_fix.Text = GetINI("cfg", "command_fix", "-direct -pdir bh113map -nofixaspect -nohide -txt", path)
             upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
+            url = GetINI("CFG", "url", "http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC", path)
             CheckBox_map.Checked = GetINI("CFG", "map", "True", path)
         Catch ex As Exception
             MsgBox("错误！！！！" & ex.ToString)
