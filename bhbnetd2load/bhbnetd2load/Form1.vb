@@ -39,10 +39,8 @@ Public Class Form_BHbnetD2Loader
     End Sub
 
     Private Sub Button_fixgame_Click(sender As Object, e As EventArgs) Handles Button_fixgame.Click
-        Try
-            My.Computer.FileSystem.DeleteFile("暗黑II BH战网.ini")
-        Catch ex As Exception
-        End Try
+
+        '调用更新程序
         runautoupdata()
     End Sub
 

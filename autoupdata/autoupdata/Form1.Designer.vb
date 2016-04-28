@@ -25,6 +25,7 @@ Partial Class Form1
         Me.Button_updata = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button_fix_game = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button_updata
@@ -49,14 +50,24 @@ Partial Class Form1
         Me.TextBox1.Location = New System.Drawing.Point(12, 41)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(361, 265)
+        Me.TextBox1.Size = New System.Drawing.Size(442, 290)
         Me.TextBox1.TabIndex = 2
+        '
+        'Button_fix_game
+        '
+        Me.Button_fix_game.Location = New System.Drawing.Point(379, 12)
+        Me.Button_fix_game.Name = "Button_fix_game"
+        Me.Button_fix_game.Size = New System.Drawing.Size(75, 23)
+        Me.Button_fix_game.TabIndex = 3
+        Me.Button_fix_game.Text = "修复游戏"
+        Me.Button_fix_game.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(388, 319)
+        Me.ClientSize = New System.Drawing.Size(466, 343)
+        Me.Controls.Add(Me.Button_fix_game)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Button_updata)
@@ -71,4 +82,5 @@ Partial Class Form1
     Friend WithEvents Button_updata As Button
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button_fix_game As Button
 End Class

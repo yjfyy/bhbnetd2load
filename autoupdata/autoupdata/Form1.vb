@@ -9,8 +9,6 @@
         Return Microsoft.VisualBasic.Left(Str, InStr(Str, Chr(0)) - 1)
     End Function
 
-
-
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Try
             My.Computer.FileSystem.DeleteFile("updata.bat")
@@ -24,6 +22,7 @@
     Private Sub Button_updata_Click(sender As Object, e As EventArgs) Handles Button_updata.Click
         If Button_updata.Text = "开始更新" Then
             Button_updata.Enabled = False
+            Button_fix_game.Enabled = False
             Button_updata.Text = "正在更新"
             Dim path As String
             path = Application.StartupPath + "\暗黑II BH战网.ini"
@@ -74,4 +73,28 @@
         TextBox1.Text = updata_readme_txt
     End Sub
 
+    Private Sub Button_fix_game_Click(sender As Object, e As EventArgs) Handles Button_fix_game.Click
+        '还原默认设置
+        resetini()
+
+    End Sub
+    Private Sub resetini()
+        '删除本程序配置ini文件
+        Try
+            My.Computer.FileSystem.DeleteFile("暗黑II BH战网.ini")
+        Catch ex As Exception
+        End Try
+        '删除mpq外文件
+
+        '注册表还原默认设置
+        '删除注册表
+        Try
+            My.Computer.Registry.LocalMachine.DeleteSubKeyTree("HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Blizzard Entertainment\Diablo II")
+        Catch ex As Exception
+
+        End Try
+
+        '写入注册表
+
+    End Sub
 End Class

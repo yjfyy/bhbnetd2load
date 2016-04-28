@@ -200,11 +200,7 @@ Partial Class Form_BHbnetD2Loader
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(101, 12)
         Me.Label1.TabIndex = 12
-<<<<<<< HEAD
         Me.Label1.Text = "Ver 0.7 by yjfyy"
-=======
-        Me.Label1.Text = "Ver 0.6 by yjfyy"
->>>>>>> a50a77e6371000da878c8a0416a6de4f3f5201a1
         '
         'Label2
         '
