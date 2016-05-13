@@ -1,7 +1,8 @@
 ﻿
 Public Class Form_BHbnetD2Loader
-    Public upsrc As String
-    Public url As String
+    Public upsrc = "http://tybh.vicp.net:81/updatafiles/"
+    Public url = "http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC"
+    Public frist_run = "Y"
     Private Sub BHbnetD2Loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '读取ini文件
         load_ini()
@@ -9,7 +10,6 @@ Public Class Form_BHbnetD2Loader
         set_reg()
         '更新autoupdata
         up_autoupdata()
-        WebBrowser.Url = New Uri(url)
     End Sub
 
     Private Sub BHbnetD2Loader_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -110,6 +110,9 @@ Public Class Form_BHbnetD2Loader
         Try
             Dim path As String
             path = Application.StartupPath + "\暗黑II BH战网.ini"
+
+            WriteINI("cfg", "frist_run", "N", path)
+
             If RadioButton_chi.Checked = True Then
                 WriteINI("CFG", "locale", "chi", path)
             Else
@@ -121,8 +124,8 @@ Public Class Form_BHbnetD2Loader
             WriteINI("CFG", "skiptobnet", CheckBox_skiptobnet.Checked.ToString, path)
             WriteINI("CFG", "customVar", TextBox_customVar.Text, path)
             WriteINI("cfg", "command_fix", " -direct -nofixaspect -nohide -txt", path)
-            WriteINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
-            WriteINI("CFG", "url", "http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC", path)
+            WriteINI("CFG", "upsrc", upsrc, path)
+            WriteINI("CFG", "url", url, path)
             WriteINI("CFG", "map", CheckBox_map.Checked.ToString, path)
         Catch ex As Exception
 
@@ -147,8 +150,67 @@ Public Class Form_BHbnetD2Loader
     '写ini API函数
     Private Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpString As String, ByVal lpFileName As String) As Int32
 
-    Private Sub WebBrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles WebBrowser.DocumentCompleted
-        '打开网页后检测更新
+    Private Sub load_ini()
+        Try
+            Dim path As String
+            path = Application.StartupPath + "\暗黑II BH战网.ini"
+            frist_run = GetINI("CFG", "frist_run", frist_run, path)
+            If frist_run = "Y" Then
+                '第一次运行，修改兼容性。
+                MsgBox("首次运行“)
+            Else
+                MsgBox（”已经设置兼容性“）
+            End If
+
+            If GetINI("CFG", "locale", "chi", path) = "chi" Then
+                RadioButton_chi.Checked = True
+            Else
+                RadioButton_eng.Checked = True
+            End If
+
+            CheckBox_w.Checked = GetINI("CFG", "w", "True", path)
+            CheckBox_ns.Checked = GetINI("CFG", "ns", "False", path)
+            CheckBox_high.Checked = GetINI("CFG", "high", "True", path)
+            CheckBox_skiptobnet.Checked = GetINI("CFG", "skiptobnet", "True", path)
+            TextBox_customVar.Text = GetINI("CFG", "customVar", "", path)
+            If TextBox_customVar.Text = "null" Then
+                TextBox_customVar.Text = ""
+            End If
+            TextBox_command_fix.Text = GetINI("cfg", "command_fix", "-direct -pdir bh113map -nofixaspect -nohide -txt", path)
+            upsrc = GetINI("CFG", "upsrc", upsrc, path)
+            url = GetINI("CFG", "url", url, path)
+            CheckBox_map.Checked = GetINI("CFG", "map", "True", path)
+        Catch ex As Exception
+            MsgBox("错误！！！！" & ex.ToString)
+        End Try
+    End Sub
+    Private Sub set_reg()
+        My.Computer.Registry.CurrentUser.CreateSubKey("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II")
+        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", "tybh.vicp.net")
+    End Sub
+    Private Sub up_autoupdata()
+
+        If My.Computer.FileSystem.FileExists("autoupdata.rar") Then
+            Try
+                My.Computer.FileSystem.DeleteFile("autoupdata.exe")
+                My.Computer.FileSystem.RenameFile("autoupdata.rar", "autoupdata.exe")
+            Catch ex As Exception
+
+            End Try
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Try
+            WebBrowser.Url = New Uri(url)
+            check_ver()
+        Catch ex As Exception
+
+        End Try
+
+        Timer1.Enabled = False
+    End Sub
+    Private Sub check_ver()
         Dim dFile As New System.Net.WebClient
         Dim r_version = "0"
         Dim l_version = "0"
@@ -174,50 +236,5 @@ Public Class Form_BHbnetD2Loader
             Button_rund2.Text = "更新游戏"
         End If
         Button_rund2.Enabled = True
-
     End Sub
-
-
-    Private Sub load_ini()
-        Try
-            Dim path As String
-            path = Application.StartupPath + "\暗黑II BH战网.ini"
-            If GetINI("CFG", "locale", "chi", path) = "chi" Then
-                RadioButton_chi.Checked = True
-            Else
-                RadioButton_eng.Checked = True
-            End If
-
-            CheckBox_w.Checked = GetINI("CFG", "w", "True", path)
-            CheckBox_ns.Checked = GetINI("CFG", "ns", "False", path)
-            CheckBox_high.Checked = GetINI("CFG", "high", "True", path)
-            CheckBox_skiptobnet.Checked = GetINI("CFG", "skiptobnet", "True", path)
-            TextBox_customVar.Text = GetINI("CFG", "customVar", "", path)
-            If TextBox_customVar.Text = "null" Then
-                TextBox_customVar.Text = ""
-            End If
-            TextBox_command_fix.Text = GetINI("cfg", "command_fix", "-direct -pdir bh113map -nofixaspect -nohide -txt", path)
-            upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
-            url = GetINI("CFG", "url", "http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC", path)
-            CheckBox_map.Checked = GetINI("CFG", "map", "True", path)
-        Catch ex As Exception
-            MsgBox("错误！！！！" & ex.ToString)
-        End Try
-    End Sub
-    Private Sub set_reg()
-        My.Computer.Registry.CurrentUser.CreateSubKey("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II")
-        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", "tybh.vicp.net")
-    End Sub
-    Private Sub up_autoupdata()
-
-        If My.Computer.FileSystem.FileExists("autoupdata.rar") Then
-            Try
-                My.Computer.FileSystem.DeleteFile("autoupdata.exe")
-                My.Computer.FileSystem.RenameFile("autoupdata.rar", "autoupdata.exe")
-            Catch ex As Exception
-
-            End Try
-        End If
-    End Sub
-
 End Class

@@ -9,6 +9,8 @@
         Return Microsoft.VisualBasic.Left(Str, InStr(Str, Chr(0)) - 1)
     End Function
 
+    'Public upsrc = "http://tybh.vicp.net:81/updatafiles/"
+
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Try
             My.Computer.FileSystem.DeleteFile("updata.bat")
@@ -59,7 +61,6 @@
             Me.Close()
         End If
 
-
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -69,14 +70,87 @@
         Dim dFile As New System.Net.WebClient
         path = Application.StartupPath + "\暗黑II BH战网.ini"
         upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
-        updata_readme_txt = dFile.DownloadString(upsrc + "updata_readme.txt")
-        TextBox1.Text = updata_readme_txt
+        Try
+
+        Catch ex As Exception
+            updata_readme_txt = dFile.DownloadString(upsrc + "updata_readme.txt")
+            TextBox1.Text = updata_readme_txt
+        End Try
+
     End Sub
 
     Private Sub Button_fix_game_Click(sender As Object, e As EventArgs) Handles Button_fix_game.Click
+        Button_fix_game.Enabled = False
+        Button_fix_game.Text = "正在修复"
+        MsgBox（"修复游戏需要时间较长，请耐心等待"）
+
         '还原默认设置
         resetini()
 
+        ' 下载文件
+        Dim path As String
+        path = Application.StartupPath + "\暗黑II BH战网.ini"
+        Dim upsrc
+        upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
+        ProgressBar1.Value = 10
+        Dim dFile As New System.Net.WebClient
+        '下载更新列表
+        '打开网页后检测更新
+        Try
+            ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
+            dFile.DownloadFile(upsrc + "fixd2.rar", "fixd2.bat")
+            ProgressBar1.Value = 20
+        Catch ex As Exception
+            MsgBox("下载失败请重试")
+            Button_fix_game.Enabled = True
+            Button_fix_game.Text = "修复游戏"
+            ProgressBar1.Value = 0
+            Exit Sub
+        End Try
+
+        Try
+            ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
+            dFile.DownloadFile(upsrc + "rar.rar", "rar.exe")
+            ProgressBar1.Value = 30
+        Catch ex As Exception
+            MsgBox("下载失败请重试")
+            Button_fix_game.Enabled = True
+            Button_fix_game.Text = "修复游戏"
+            ProgressBar1.Value = 0
+            Exit Sub
+        End Try
+
+        Try
+            dFile.DownloadFile(upsrc + "d2fixdata.rar", "d2fixdata.rar")
+            'dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/d2updata.rar", "d2updata.rar")
+            ProgressBar1.Value = 80
+        Catch ex As Exception
+            MsgBox("下载失败请重试")
+            Button_fix_game.Enabled = True
+            Button_fix_game.Text = "修复游戏"
+            ProgressBar1.Value = 0
+            Exit Sub
+        End Try
+
+        Shell("fixd2.bat", AppWinStyle.Hide)
+        ProgressBar1.Value = 90
+
+        '设置兼容性
+
+        ProgressBar1.Value = 95
+
+        '运行dvitest
+
+        ProgressBar1.Value = 100
+
+        MsgBox("修复完成，如果运行报错，请手动设置兼容性")
+        Button_updata.Text = "关闭"
+        Button_updata.Enabled = True
+
+
+
+
+        Me.Close()
     End Sub
     Private Sub resetini()
         '删除本程序配置ini文件

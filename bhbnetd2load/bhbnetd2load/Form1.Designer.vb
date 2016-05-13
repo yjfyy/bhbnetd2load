@@ -22,6 +22,7 @@ Partial Class Form_BHbnetD2Loader
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_BHbnetD2Loader))
         Me.WebBrowser = New System.Windows.Forms.WebBrowser()
         Me.Button_rund2 = New System.Windows.Forms.Button()
@@ -44,6 +45,7 @@ Partial Class Form_BHbnetD2Loader
         Me.Label_r_version = New System.Windows.Forms.Label()
         Me.Button_fixgame = New System.Windows.Forms.Button()
         Me.TextBox_command_fix = New System.Windows.Forms.TextBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox_locale.SuspendLayout()
         Me.GroupBox_canshu.SuspendLayout()
         Me.GroupBox_zidingyicanshu.SuspendLayout()
@@ -255,6 +257,11 @@ Partial Class Form_BHbnetD2Loader
         Me.TextBox_command_fix.TabIndex = 19
         Me.TextBox_command_fix.Visible = False
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 2000
+        '
         'Form_BHbnetD2Loader
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -312,4 +319,5 @@ Partial Class Form_BHbnetD2Loader
     Friend WithEvents Button_fixgame As Button
     Friend WithEvents TextBox_command_fix As TextBox
     Friend WithEvents CheckBox_map As CheckBox
+    Friend WithEvents Timer1 As Timer
 End Class
