@@ -13,8 +13,10 @@
 
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Try
-            My.Computer.FileSystem.DeleteFile("updata.bat")
+            My.Computer.FileSystem.DeleteFile("up_com.bat")
+            My.Computer.FileSystem.DeleteFile("fix_com.bat")
             My.Computer.FileSystem.DeleteFile("d2updata.rar")
+            My.Computer.FileSystem.DeleteFile("d2fixdata.rar")
         Catch ex As Exception
 
         End Try
@@ -35,24 +37,25 @@
             '下载更新列表
             '打开网页后检测更新
             Try
-                dFile.DownloadFile(upsrc + "d2updata.rar", "d2updata.rar")
-                'dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/d2updata.rar", "d2updata.rar")
-                ProgressBar1.Value = 60
+                ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
+                dFile.DownloadFile(upsrc + "up_com.bat.rar", "up_com.bat")
+                ProgressBar1.Value = 30
             Catch ex As Exception
-                MsgBox("d2updata.rar下载失败请重试")
+                MsgBox("下载失败请重试")
                 ProgressBar1.Value = 0
                 Exit Sub
             End Try
             Try
-                ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
-                dFile.DownloadFile(upsrc + "updata.rar", "updata.bat")
-                ProgressBar1.Value = 70
+                dFile.DownloadFile(upsrc + "d2updata.rar", "d2updata.rar")
+                'dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/d2updata.rar", "d2updata.rar")
+                ProgressBar1.Value = 80
             Catch ex As Exception
-                MsgBox("updata.bat下载失败请重试")
+                MsgBox("下载失败请重试")
                 ProgressBar1.Value = 0
                 Exit Sub
             End Try
-            Shell("updata.bat", AppWinStyle.Hide)
+
+            Shell("up_com.bat", AppWinStyle.Hide)
             ProgressBar1.Value = 100
             MsgBox("升级成功")
             Button_updata.Text = "关闭"
@@ -91,14 +94,14 @@
         Dim path As String
         path = Application.StartupPath + "\暗黑II BH战网.ini"
         Dim upsrc
-        upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
+        upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/fixdata", path)
         ProgressBar1.Value = 10
         Dim dFile As New System.Net.WebClient
         '下载更新列表
         '打开网页后检测更新
         Try
             ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
-            dFile.DownloadFile(upsrc + "fixd2.rar", "fixd2.bat")
+            dFile.DownloadFile(upsrc + "fix_com.bat.rar", "fix_com.bat")
             ProgressBar1.Value = 20
         Catch ex As Exception
             MsgBox("下载失败请重试")
@@ -110,7 +113,7 @@
 
         Try
             ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
-            dFile.DownloadFile(upsrc + "rar.rar", "rar.exe")
+            dFile.DownloadFile(upsrc + "rar.exe.rar", "rar.exe")
             ProgressBar1.Value = 30
         Catch ex As Exception
             MsgBox("下载失败请重试")
@@ -132,7 +135,7 @@
             Exit Sub
         End Try
 
-        Shell("fixd2.bat", AppWinStyle.Hide)
+        Shell("fix_com.bat", AppWinStyle.Hide)
         ProgressBar1.Value = 90
 
         '设置兼容性
