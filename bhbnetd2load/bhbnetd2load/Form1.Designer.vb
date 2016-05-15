@@ -58,6 +58,7 @@ Partial Class Form_BHbnetD2Loader
         Me.WebBrowser.MaximumSize = New System.Drawing.Size(880, 530)
         Me.WebBrowser.MinimumSize = New System.Drawing.Size(880, 530)
         Me.WebBrowser.Name = "WebBrowser"
+        Me.WebBrowser.ScrollBarsEnabled = False
         Me.WebBrowser.Size = New System.Drawing.Size(880, 530)
         Me.WebBrowser.TabIndex = 0
         Me.WebBrowser.TabStop = False
@@ -260,7 +261,7 @@ Partial Class Form_BHbnetD2Loader
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 200
+        Me.Timer1.Interval = 1000
         '
         'Form_BHbnetD2Loader
         '

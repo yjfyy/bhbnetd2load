@@ -84,7 +84,7 @@
         MsgBox（"修复游戏需要时间较长，请耐心等待"）
 
         '还原默认设置
-
+        resetini()
 
         ' 下载文件
         Dim path As String

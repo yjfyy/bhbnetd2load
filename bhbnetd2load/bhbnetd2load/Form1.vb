@@ -1,13 +1,13 @@
 ﻿
 Public Class Form_BHbnetD2Loader
     Public upsrc = "http://code.taobao.org/svn/BHBnet/trunk/updatafiles/"
-    Public url = "http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC"
+    Public url = "index.mht"
     Public frist_run = "Y"
     Private Sub BHbnetD2Loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '读取ini文件
         load_ini()
         '设置注册表
-        set_reg()
+        'set_reg()
         '更新autoupdata
         up_autoupdata()
     End Sub
@@ -219,12 +219,17 @@ Public Class Form_BHbnetD2Loader
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Try
-            WebBrowser.Url = New Uri(url)
             check_ver()
+        Catch ex As Exception
+        End Try
+
+        Try
+            WebBrowser.Url = New Uri(Application.StartupPath + "/" + url)
+            'Timer1.Enabled = False
+            'MsgBox(WebBrowser.Url.ToString)
         Catch ex As Exception
 
         End Try
-
         Timer1.Enabled = False
     End Sub
     Private Sub check_ver()
