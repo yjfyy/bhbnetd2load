@@ -54,6 +54,7 @@ Public Class Form_BHbnetD2Loader
         Dim customVar As String
         Dim fix As String
         Dim map As String
+        Dim dFile As New System.Net.WebClient
 
         If CheckBox_high.Checked Then
             d2loader = "D2Loader-high.exe "
@@ -98,6 +99,11 @@ Public Class Form_BHbnetD2Loader
         d2run_command = d2loader + local + w + ns + skiptobnet + map + " " + customVar + " " + fix
         Try
             'MsgBox(d2run_command)
+            Try
+                My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", dFile.DownloadString("http://code.taobao.org/svn/BHBnet/trunk/ip/ip.txt"))
+            Catch ex As Exception
+                MsgBox（"获取战网ip失败，清关闭重试"）
+            End Try
             Shell(d2run_command, AppWinStyle.NormalFocus, False)
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -186,7 +192,7 @@ Public Class Form_BHbnetD2Loader
         End Try
     End Sub
     Private Sub set_reg()
-        My.Computer.Registry.CurrentUser.CreateSubKey("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II")
+        ' My.Computer.Registry.CurrentUser.CreateSubKey("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II")
         'My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", "tybh.vicp.net")
     End Sub
     Private Sub up_autoupdata()
@@ -242,13 +248,6 @@ Public Class Form_BHbnetD2Loader
         Catch ex As Exception
             Label_r_version.Text = "检测超时"
         End Try
-        Try
-            My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", dFile.DownloadString("http://code.taobao.org/svn/BHBnet/trunk/ip/ip.txt"))
-        Catch ex As Exception
-            MsgBox（"获取战网ip失败，清关闭重试"）
-        End Try
-
-
 
         If Label_r_version.Text = "检测超时" Or Label_r_version.Text = Label_l_version.Text Then
             Button_rund2.Text = "运行游戏"

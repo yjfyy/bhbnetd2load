@@ -55,10 +55,10 @@ Partial Class Form_BHbnetD2Loader
         '
         Me.WebBrowser.Dock = System.Windows.Forms.DockStyle.Top
         Me.WebBrowser.Location = New System.Drawing.Point(0, 0)
-        Me.WebBrowser.MaximumSize = New System.Drawing.Size(884, 540)
-        Me.WebBrowser.MinimumSize = New System.Drawing.Size(884, 540)
+        Me.WebBrowser.MaximumSize = New System.Drawing.Size(880, 530)
+        Me.WebBrowser.MinimumSize = New System.Drawing.Size(880, 530)
         Me.WebBrowser.Name = "WebBrowser"
-        Me.WebBrowser.Size = New System.Drawing.Size(884, 540)
+        Me.WebBrowser.Size = New System.Drawing.Size(880, 530)
         Me.WebBrowser.TabIndex = 0
         Me.WebBrowser.TabStop = False
         Me.WebBrowser.Url = New System.Uri("", System.UriKind.Relative)
