@@ -283,7 +283,6 @@ Partial Class Form_BHbnetD2Loader
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(900, 710)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(900, 710)
         Me.Name = "Form_BHbnetD2Loader"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
