@@ -202,7 +202,7 @@ Partial Class Form_BHbnetD2Loader
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(101, 12)
         Me.Label1.TabIndex = 12
-        Me.Label1.Text = "Ver 0.8 by yjfyy"
+        Me.Label1.Text = "Ver 0.9 by yjfyy"
         '
         'Label2
         '
@@ -260,7 +260,7 @@ Partial Class Form_BHbnetD2Loader
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 500
+        Me.Timer1.Interval = 200
         '
         'Form_BHbnetD2Loader
         '
