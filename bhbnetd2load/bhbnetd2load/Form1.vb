@@ -1,6 +1,6 @@
 ﻿
 Public Class Form_BHbnetD2Loader
-    Public upsrc = "http://tybh.vicp.net:81/updatafiles/"
+    Public upsrc = "http://code.taobao.org/svn/BHBnet/trunk/updatafiles/"
     Public url = "http://tybh.vicp.net:81/ladder/stats.php?game=D2XP&type=SC"
     Public frist_run = "Y"
     Private Sub BHbnetD2Loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -157,9 +157,10 @@ Public Class Form_BHbnetD2Loader
             frist_run = GetINI("CFG", "frist_run", frist_run, path)
             If frist_run = "Y" Then
                 '第一次运行，修改兼容性。
-                MsgBox("首次运行“)
+                ' MsgBox("首次运行“)
+                '待增加。
             Else
-                MsgBox（”已经设置兼容性“）
+                ''MsgBox（”已经设置兼容性“）
             End If
 
             If GetINI("CFG", "locale", "chi", path) = "chi" Then
@@ -198,6 +199,16 @@ Public Class Form_BHbnetD2Loader
 
             End Try
         End If
+
+        If My.Computer.FileSystem.FileExists("autoupdata.exe.rar") Then
+            Try
+                My.Computer.FileSystem.DeleteFile("autoupdata.exe")
+                My.Computer.FileSystem.RenameFile("autoupdata.exe.rar", "autoupdata.exe")
+            Catch ex As Exception
+
+            End Try
+        End If
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -224,6 +235,7 @@ Public Class Form_BHbnetD2Loader
                 Exit Sub
             End If
         End Try
+
         Try
             r_version = dFile.DownloadString(upsrc + "version.txt")
             Label_r_version.Text = r_version

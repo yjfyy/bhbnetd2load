@@ -9,7 +9,7 @@
         Return Microsoft.VisualBasic.Left(Str, InStr(Str, Chr(0)) - 1)
     End Function
 
-    'Public upsrc = "http://tybh.vicp.net:81/updatafiles/"
+    Public upsrc = "http://code.taobao.org/svn/BHBnet/trunk/updatafiles/"
 
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Try
@@ -30,14 +30,11 @@
             Button_updata.Text = "正在更新"
             Dim path As String
             path = Application.StartupPath + "\暗黑II BH战网.ini"
-            Dim upsrc
-            upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
+            upsrc = GetINI("CFG", "upsrc", upsrc, path)
             ProgressBar1.Value = 10
             Dim dFile As New System.Net.WebClient
-            '下载更新列表
-            '打开网页后检测更新
+            '下载更新文件
             Try
-                ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
                 dFile.DownloadFile(upsrc + "up_com.bat.rar", "up_com.bat")
                 ProgressBar1.Value = 30
             Catch ex As Exception
@@ -47,7 +44,6 @@
             End Try
             Try
                 dFile.DownloadFile(upsrc + "d2updata.rar", "d2updata.rar")
-                'dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/d2updata.rar", "d2updata.rar")
                 ProgressBar1.Value = 80
             Catch ex As Exception
                 MsgBox("下载失败请重试")
@@ -67,44 +63,43 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim upsrc As String
         Dim path As String
         Dim updata_readme_txt As String
         Dim dFile As New System.Net.WebClient
         path = Application.StartupPath + "\暗黑II BH战网.ini"
-        upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/", path)
+        upsrc = GetINI("CFG", "upsrc", upsrc, path)
         Try
-
-        Catch ex As Exception
             updata_readme_txt = dFile.DownloadString(upsrc + "updata_readme.txt")
             TextBox1.Text = updata_readme_txt
+        Catch ex As Exception
+
         End Try
 
     End Sub
 
     Private Sub Button_fix_game_Click(sender As Object, e As EventArgs) Handles Button_fix_game.Click
+        Button_updata.Enabled = False
         Button_fix_game.Enabled = False
         Button_fix_game.Text = "正在修复"
         MsgBox（"修复游戏需要时间较长，请耐心等待"）
 
         '还原默认设置
-        resetini()
+
 
         ' 下载文件
         Dim path As String
         path = Application.StartupPath + "\暗黑II BH战网.ini"
-        Dim upsrc
-        upsrc = GetINI("CFG", "upsrc", "http://tybh.vicp.net:81/updatafiles/fixdata", path)
-        ProgressBar1.Value = 10
+        upsrc = GetINI("CFG", "upsrc", upsrc, path)
+        ProgressBar1.Value = 5
         Dim dFile As New System.Net.WebClient
         '下载更新列表
         '打开网页后检测更新
         Try
-            ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
-            dFile.DownloadFile(upsrc + "fix_com.bat.rar", "fix_com.bat")
-            ProgressBar1.Value = 20
+
+            dFile.DownloadFile(upsrc + "fixdata/fix_com.bat.rar", "fix_com.bat")
+            ProgressBar1.Value = 10
         Catch ex As Exception
-            MsgBox("下载失败请重试")
+            MsgBox("1下载失败请重试")
             Button_fix_game.Enabled = True
             Button_fix_game.Text = "修复游戏"
             ProgressBar1.Value = 0
@@ -112,11 +107,11 @@
         End Try
 
         Try
-            ' dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/updata.rar", "updata.bat")
-            dFile.DownloadFile(upsrc + "rar.exe.rar", "rar.exe")
-            ProgressBar1.Value = 30
+
+            dFile.DownloadFile(upsrc + "fixdata/Rar.exe.rar", "rar.exe")
+            ProgressBar1.Value = 40
         Catch ex As Exception
-            MsgBox("下载失败请重试")
+            MsgBox("2下载失败请重试")
             Button_fix_game.Enabled = True
             Button_fix_game.Text = "修复游戏"
             ProgressBar1.Value = 0
@@ -124,18 +119,25 @@
         End Try
 
         Try
-            dFile.DownloadFile(upsrc + "d2fixdata.rar", "d2fixdata.rar")
-            'dFile.DownloadFile("https://github.com/yjfyy/bhbnetd2load/raw/master/autoupdata/d2updata.rar", "d2updata.rar")
+            dFile.DownloadFile(upsrc + "fixdata/d2fixdata.rar", "d2fixdata.rar")
+
             ProgressBar1.Value = 80
         Catch ex As Exception
-            MsgBox("下载失败请重试")
+            MsgBox("3下载失败请重试")
             Button_fix_game.Enabled = True
             Button_fix_game.Text = "修复游戏"
             ProgressBar1.Value = 0
             Exit Sub
         End Try
 
-        Shell("fix_com.bat", AppWinStyle.Hide)
+        Try
+            Shell("fix_com.bat", AppWinStyle.Hide)
+        Catch ex As Exception
+            MsgBox("修复程序运行错误，请重试")
+            Button_fix_game.Enabled = True
+            Button_fix_game.Text = "修复游戏"
+            ProgressBar1.Value = 0
+        End Try
         ProgressBar1.Value = 90
 
         '设置兼容性
@@ -144,7 +146,9 @@
 
         '运行dvitest
 
+        resetini()
         ProgressBar1.Value = 100
+
 
         MsgBox("修复完成，如果运行报错，请手动设置兼容性")
         Button_updata.Text = "关闭"
