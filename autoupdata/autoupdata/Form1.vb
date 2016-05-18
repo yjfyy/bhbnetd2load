@@ -51,7 +51,7 @@
                 Exit Sub
             End Try
 
-            Shell("up_com.bat", AppWinStyle.Hide)
+            Shell("up_com.bat", AppWinStyle.Hide, Wait:=True, Timeout:=120000)
             ProgressBar1.Value = 100
             MsgBox("升级成功")
             Button_updata.Text = "关闭"
@@ -176,6 +176,21 @@
         End Try
 
         '写入注册表
+        'My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "Resolution", dFile.DownloadString("http://code.taobao.org/svn/BHBnet/trunk/ip/ip.txt"))
+
+        '"Resolution"=dword:00000001
+        '"Always Run"=dword:00000001
+        '"MAX_PLAYER"=dword:00000008
+        '"Perspective"=dword:00000001
+        '"Resolution"=dword:00000001
+        '"Always Run"=dword:00000001
+        '"D2RMRes"=dword:00000012
+        '"LVL_REST"=dword:0000029a
+        '"MAX_PLAYER"=dword:00000007
+        '"Perspective"=dword:00000000
+        '"Aux Battle.net"="216.148.246.255"
+
+
 
     End Sub
 End Class
