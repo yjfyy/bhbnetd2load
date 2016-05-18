@@ -131,7 +131,7 @@
         End Try
 
         Try
-            Shell("fix_com.bat", AppWinStyle.Hide)
+            Shell("fix_com.bat", AppWinStyle.Hide, Wait:=True, Timeout:=120000)
         Catch ex As Exception
             MsgBox("修复程序运行错误，请重试")
             Button_fix_game.Enabled = True
@@ -153,10 +153,6 @@
         MsgBox("修复完成，如果运行报错，请手动设置兼容性")
         Button_updata.Text = "关闭"
         Button_updata.Enabled = True
-
-
-
-
         Me.Close()
     End Sub
     Private Sub resetini()
