@@ -1,6 +1,12 @@
-﻿Public Class Form1
+﻿Imports System.ComponentModel
+Imports System.Net
+
+Public Class Form1
     '读ini API函数
     Private Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Int32, ByVal lpFileName As String) As Int32
+    Dim dFile As New System.Net.WebClient
+
+
 
     '读取ini文件内容
     Public Function GetINI(ByVal Section As String, ByVal AppName As String, ByVal lpDefault As String, ByVal FileName As String) As String
@@ -23,11 +29,16 @@
         Shell("暗黑II BH战网.exe", AppWinStyle.NormalFocus)
     End Sub
 
+
     Private Sub Button_updata_Click(sender As Object, e As EventArgs) Handles Button_updata.Click
+        'Dim up_com_bat_rar_uri = New Uri(upsrc + "up_com.bat.rar")
+        'Dim d2updata_rar_uri = New Uri(upsrc + "d2updata.rar")
+
         If Button_updata.Text = "开始更新" Then
+            Button_updata.Text = "正在更新"
             Button_updata.Enabled = False
             Button_fix_game.Enabled = False
-            Button_updata.Text = "正在更新"
+
             Dim path As String
             path = Application.StartupPath + "\暗黑II BH战网.ini"
             upsrc = GetINI("CFG", "upsrc", upsrc, path)
@@ -38,7 +49,7 @@
                 dFile.DownloadFile(upsrc + "up_com.bat.rar", "up_com.bat")
                 ProgressBar1.Value = 30
             Catch ex As Exception
-                MsgBox("下载失败请重试")
+                MsgBox("1下载失败请重试")
                 ProgressBar1.Value = 0
                 Exit Sub
             End Try
@@ -46,11 +57,11 @@
                 dFile.DownloadFile(upsrc + "d2updata.rar", "d2updata.rar")
                 ProgressBar1.Value = 80
             Catch ex As Exception
-                MsgBox("下载失败请重试")
+                MsgBox(ex.ToString)
+                MsgBox("2下载失败请重试")
                 ProgressBar1.Value = 0
                 Exit Sub
             End Try
-
             Shell("up_com.bat", AppWinStyle.Hide, Wait:=True, Timeout:=120000)
             ProgressBar1.Value = 100
             MsgBox("升级成功")
@@ -81,7 +92,7 @@
         Button_updata.Enabled = False
         Button_fix_game.Enabled = False
         Button_fix_game.Text = "正在修复"
-        MsgBox（"修复游戏需要时间较长，请耐心等待"）
+        MsgBox（"修复游戏需要时间较长， 请耐心等待"）
 
         '还原默认设置
         resetini()
@@ -91,7 +102,7 @@
         path = Application.StartupPath + "\暗黑II BH战网.ini"
         upsrc = GetINI("CFG", "upsrc", upsrc, path)
         ProgressBar1.Value = 5
-        Dim dFile As New System.Net.WebClient
+
         '下载更新列表
         '打开网页后检测更新
         Try
@@ -133,7 +144,7 @@
         Try
             Shell("fix_com.bat", AppWinStyle.Hide, Wait:=True, Timeout:=120000)
         Catch ex As Exception
-            MsgBox("修复程序运行错误，请重试")
+            MsgBox("修复程序运行错误， 请重试")
             Button_fix_game.Enabled = True
             Button_fix_game.Text = "修复游戏"
             ProgressBar1.Value = 0
@@ -150,7 +161,7 @@
         ProgressBar1.Value = 100
 
 
-        MsgBox("修复完成，如果运行报错，请手动设置兼容性")
+        MsgBox("修复完成， 如果运行报错， 请手动设置兼容性")
         Button_updata.Text = "关闭"
         Button_updata.Enabled = True
         Me.Close()
@@ -172,7 +183,7 @@
         End Try
 
         '写入注册表
-        'My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "Resolution", dFile.DownloadString("http://code.taobao.org/svn/BHBnet/trunk/ip/ip.txt"))
+        'My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "Resolution", dFile.DownloadString("http: //code.taobao.org/svn/BHBnet/trunk/ip/ip.txt"))
 
         '"Resolution"=dword:00000001
         '"Always Run"=dword:00000001
@@ -189,4 +200,9 @@
 
 
     End Sub
+
+
+
+
+
 End Class

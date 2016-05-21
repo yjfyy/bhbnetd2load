@@ -2,14 +2,16 @@
 Public Class Form_BHbnetD2Loader
     Public upsrc = "http://code.taobao.org/svn/BHBnet/trunk/updatafiles/"
     Public url = "index.mht"
-    Public frist_run = "Y"
+    '    Public frist_run = "Y"
     Private Sub BHbnetD2Loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '读取ini文件
         load_ini()
         '设置注册表
         'set_reg()
+
         '更新autoupdata
         up_autoupdata()
+        kongjianzhuangtai()
     End Sub
 
     Private Sub BHbnetD2Loader_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
@@ -46,7 +48,7 @@ Public Class Form_BHbnetD2Loader
 
     Private Sub runCommand()
         Dim d2run_command As String
-        Dim d2loader As String
+        Dim d2loader As String = “d2loader-1.13c.exe"
         Dim local As String
         Dim w As String
         Dim ns As String
@@ -56,18 +58,28 @@ Public Class Form_BHbnetD2Loader
         Dim map As String
         Dim dFile As New System.Net.WebClient
 
-        If CheckBox_high.Checked Then
-            d2loader = "D2Loader-high.exe "
-        Else
-            d2loader = "D2Loader-1.13c.exe "
-        End If
-
+        '语言
         If RadioButton_chi.Checked Then
             local = " -locale chi"
         Else
             local = " -locale eng"
         End If
 
+        '引导模式
+        If RadioButton_load_d2.Checked Then
+            d2loader = "diablo II.exe "
+        End If
+        If RadioButton_load_d2loader.Checked Then
+            d2loader = "d2loader-1.13c.exe "
+        End If
+        If RadioButton_load_d2loader_high.Checked Then
+            d2loader = "d2loader-high.exe "
+        End If
+        If RadioButton_load_PlugY.Checked Then
+            d2loader = "plugy.exe "
+        End If
+
+        '游戏参数
         If CheckBox_w.Checked Then
             w = " -w"
         Else
@@ -86,23 +98,48 @@ Public Class Form_BHbnetD2Loader
             skiptobnet = ""
         End If
 
-        If CheckBox_map.Checked Then
+        If CheckBox_hackmap.Checked Then
             map = " -pdir bh113map"
         Else
             map = ""
         End If
 
+        '自定义命令
         customVar = TextBox_customVar.Text
 
+        '固定命令
         fix = TextBox_command_fix.Text
 
         d2run_command = d2loader + local + w + ns + skiptobnet + map + " " + customVar + " " + fix
+
+        If RadioButton_hackmap_cfg_plot.Checked Then
+            '重命名D2HackMap-plot.cfg
+            Try
+                My.Computer.FileSystem.CopyFile(Application.StartupPath + "/bh113map/D2HackMap-plot.cfg", Application.StartupPath + "/bh113map/D2HackMap.cfg", True)
+                'MsgBox("改为剧情")
+            Catch ex As Exception
+
+            End Try
+
+
+        Else
+            '重命名D2HackMap-fram.cfg
+
+            Try
+                My.Computer.FileSystem.CopyFile(Application.StartupPath + "/bh113map/D2HackMap-fram.cfg", Application.StartupPath + "/bh113map/D2HackMap.cfg", True)
+                'MsgBox("改为fram")
+            Catch ex As Exception
+
+            End Try
+        End If
+
         Try
-            'MsgBox(d2run_command)
+            ' MsgBox(d2run_command)
             Try
                 My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", dFile.DownloadString("http://code.taobao.org/svn/BHBnet/trunk/ip/ip.txt"))
             Catch ex As Exception
-                MsgBox（"获取战网ip失败，清关闭重试"）
+                MsgBox（"获取战网ip失败，清重试"）
+                Exit Sub
             End Try
             Shell(d2run_command, AppWinStyle.NormalFocus, False)
         Catch ex As Exception
@@ -113,29 +150,57 @@ Public Class Form_BHbnetD2Loader
 
     Private Sub save_ini()
         '写入ini文件
+
+
         Try
+            Dim load_mode = "d2loader-1.13c.exe"
             Dim path As String
             path = Application.StartupPath + "\暗黑II BH战网.ini"
 
             WriteINI("cfg", "frist_run", "N", path)
 
+            '语言
             If RadioButton_chi.Checked = True Then
                 WriteINI("CFG", "locale", "chi", path)
             Else
                 WriteINI("CFG", "locale", "eng", path)
             End If
+
+            '启动模式
+            If RadioButton_load_d2.Checked Then
+                load_mode = "diablo II.exe"
+            End If
+            If RadioButton_load_d2loader.Checked Then
+                load_mode = "d2loader-1.13c.exe"
+            End If
+            If RadioButton_load_d2loader_high.Checked Then
+                load_mode = "D2Loader-high.exe"
+            End If
+            If RadioButton_load_PlugY.Checked Then
+                load_mode = "plugy.exe"
+            End If
+            WriteINI("CFG", "load_mode", load_mode, path)
+
+            '游戏参数
             WriteINI("CFG", "w", CheckBox_w.Checked.ToString, path)
             WriteINI("CFG", "ns", CheckBox_ns.Checked.ToString, path)
-            WriteINI("CFG", "high", CheckBox_high.Checked.ToString, path)
             WriteINI("CFG", "skiptobnet", CheckBox_skiptobnet.Checked.ToString, path)
+            WriteINI("CFG", "map", CheckBox_hackmap.Checked.ToString, path)
+
+            '自定义参数
             WriteINI("CFG", "customVar", TextBox_customVar.Text, path)
+
+            '固定参数
             WriteINI("cfg", "command_fix", " -direct -nofixaspect -nohide -txt", path)
+
+            '更新源
             WriteINI("CFG", "upsrc", upsrc, path)
             WriteINI("CFG", "url", url, path)
-            WriteINI("CFG", "map", CheckBox_map.Checked.ToString, path)
-        Catch ex As Exception
 
+        Catch ex As Exception
+            MsgBox("参数没有保存成功，检查文件可写性，权限等")
         End Try
+
     End Sub
 
     '读取ini文件内容
@@ -159,34 +224,64 @@ Public Class Form_BHbnetD2Loader
     Private Sub load_ini()
         Try
             Dim path As String
+            Dim load_mode
+            Dim frist_run
             path = Application.StartupPath + "\暗黑II BH战网.ini"
-            frist_run = GetINI("CFG", "frist_run", frist_run, path)
+
+            '第一次运行，修改兼容性。
+            frist_run = GetINI("CFG", "frist_run", "Y", path)
             If frist_run = "Y" Then
-                '第一次运行，修改兼容性。
-                ' MsgBox("首次运行“)
+                'MsgBox("首次运行“)
                 '待增加。
             Else
-                ''MsgBox（”已经设置兼容性“）
+                'MsgBox（”已经设置兼容性“）
             End If
 
+            '语言
             If GetINI("CFG", "locale", "chi", path) = "chi" Then
                 RadioButton_chi.Checked = True
             Else
                 RadioButton_eng.Checked = True
             End If
 
+            '启动模式
+            load_mode = GetINI("CFG", "load_mode", "d2loader-1.13c.exe", path)
+            Select Case load_mode
+                Case "diablo II.exe"
+                    RadioButton_load_d2.Checked = True
+                Case "d2loader-1.13c.exe"
+                    RadioButton_load_d2loader.Checked = True
+                Case "plugy.exe"
+                    RadioButton_load_PlugY.Checked = True
+                Case Else
+                    RadioButton_load_d2loader_high.Checked = True
+            End Select
+
+            '游戏参数
             CheckBox_w.Checked = GetINI("CFG", "w", "True", path)
             CheckBox_ns.Checked = GetINI("CFG", "ns", "False", path)
-            CheckBox_high.Checked = GetINI("CFG", "high", "True", path)
             CheckBox_skiptobnet.Checked = GetINI("CFG", "skiptobnet", "True", path)
+            CheckBox_hackmap.Checked = GetINI("CFG", "hackmap", "True", path)
+
+            '插件选项
+            If GetINI("CFG", "hackmap_cfg", "plot", path) = "plot" Then
+                RadioButton_hackmap_cfg_plot.Checked = True
+            Else
+                RadioButton_hackmap_cfg_fram.Checked = True
+            End If
+
             TextBox_customVar.Text = GetINI("CFG", "customVar", "", path)
             If TextBox_customVar.Text = "null" Then
                 TextBox_customVar.Text = ""
             End If
+
+            '固定参数
             TextBox_command_fix.Text = GetINI("cfg", "command_fix", "-direct -pdir bh113map -nofixaspect -nohide -txt", path)
+
+            '更新源
             upsrc = GetINI("CFG", "upsrc", upsrc, path)
             url = GetINI("CFG", "url", url, path)
-            CheckBox_map.Checked = GetINI("CFG", "map", "True", path)
+
         Catch ex As Exception
             MsgBox("错误！！！！" & ex.ToString)
         End Try
@@ -218,6 +313,7 @@ Public Class Form_BHbnetD2Loader
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Timer1.Enabled = False
         Try
             check_ver()
         Catch ex As Exception
@@ -230,22 +326,12 @@ Public Class Form_BHbnetD2Loader
         Catch ex As Exception
 
         End Try
-        Timer1.Enabled = False
+
     End Sub
     Private Sub check_ver()
         Dim dFile As New System.Net.WebClient
         Dim r_version = "0"
         Dim l_version = "0"
-        Try
-            l_version = My.Computer.FileSystem.ReadAllText(".\version.txt")
-            Label_l_version.Text = l_version
-        Catch ex As Exception
-            If l_version = "0" Then
-                Label_r_version.Text = "无法获得本地版本"
-                MsgBox("无法获得本地版本,推荐修复游戏")
-                Exit Sub
-            End If
-        End Try
 
         Try
             r_version = dFile.DownloadString(upsrc + "version.txt")
@@ -254,11 +340,51 @@ Public Class Form_BHbnetD2Loader
             Label_r_version.Text = "检测超时"
         End Try
 
+        Try
+            l_version = My.Computer.FileSystem.ReadAllText(".\version.txt")
+            Label_l_version.Text = l_version
+        Catch ex As Exception
+            If l_version = "0" Then
+                Label_l_version.Text = "无法获得本地版本"
+                MsgBox("无法获得本地版本,推荐修复游戏")
+                Button_rund2.Text = "请修复游戏"
+                Exit Sub
+            End If
+        End Try
+
+
         If Label_r_version.Text = "检测超时" Or Label_r_version.Text = Label_l_version.Text Then
             Button_rund2.Text = "运行游戏"
         Else
             Button_rund2.Text = "更新游戏"
         End If
         Button_rund2.Enabled = True
+    End Sub
+
+    Private Sub kongjianzhuangtai()
+        If RadioButton_load_d2.Checked Then
+            CheckBox_hackmap.Enabled = False
+            CheckBox_hackmap.Checked = False
+        Else
+            CheckBox_hackmap.Enabled = True
+        End If
+
+        If CheckBox_hackmap.Checked = False Then
+            GroupBox_hackmap_cfg.Enabled = False
+            RadioButton_hackmap_cfg_fram.Checked = False
+            RadioButton_hackmap_cfg_plot.Checked = False
+        Else
+            GroupBox_hackmap_cfg.Enabled = True
+            RadioButton_hackmap_cfg_plot.Checked = True
+        End If
+    End Sub
+
+    Private Sub RadioButton_load_d2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton_load_d2.CheckedChanged
+        kongjianzhuangtai()
+
+    End Sub
+
+    Private Sub CheckBox_hackmap_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox_hackmap.CheckedChanged
+        kongjianzhuangtai()
     End Sub
 End Class

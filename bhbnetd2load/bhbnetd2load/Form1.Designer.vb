@@ -26,15 +26,15 @@ Partial Class Form_BHbnetD2Loader
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_BHbnetD2Loader))
         Me.WebBrowser = New System.Windows.Forms.WebBrowser()
         Me.Button_rund2 = New System.Windows.Forms.Button()
-        Me.CheckBox_high = New System.Windows.Forms.CheckBox()
         Me.CheckBox_w = New System.Windows.Forms.CheckBox()
         Me.CheckBox_ns = New System.Windows.Forms.CheckBox()
         Me.CheckBox_skiptobnet = New System.Windows.Forms.CheckBox()
         Me.GroupBox_locale = New System.Windows.Forms.GroupBox()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.RadioButton_eng = New System.Windows.Forms.RadioButton()
         Me.RadioButton_chi = New System.Windows.Forms.RadioButton()
         Me.GroupBox_canshu = New System.Windows.Forms.GroupBox()
-        Me.CheckBox_map = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_hackmap = New System.Windows.Forms.CheckBox()
         Me.GroupBox_zidingyicanshu = New System.Windows.Forms.GroupBox()
         Me.TextBox_customVar = New System.Windows.Forms.TextBox()
         Me.Button_D2VidTst = New System.Windows.Forms.Button()
@@ -46,9 +46,21 @@ Partial Class Form_BHbnetD2Loader
         Me.Button_fixgame = New System.Windows.Forms.Button()
         Me.TextBox_command_fix = New System.Windows.Forms.TextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.GroupBox_hackmap_cfg = New System.Windows.Forms.GroupBox()
+        Me.RadioButton_hackmap_cfg_fram = New System.Windows.Forms.RadioButton()
+        Me.RadioButton_hackmap_cfg_plot = New System.Windows.Forms.RadioButton()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton_load_PlugY = New System.Windows.Forms.RadioButton()
+        Me.RadioButton_load_d2loader_high = New System.Windows.Forms.RadioButton()
+        Me.RadioButton_load_d2loader = New System.Windows.Forms.RadioButton()
+        Me.RadioButton_load_d2 = New System.Windows.Forms.RadioButton()
         Me.GroupBox_locale.SuspendLayout()
         Me.GroupBox_canshu.SuspendLayout()
         Me.GroupBox_zidingyicanshu.SuspendLayout()
+        Me.GroupBox_hackmap_cfg.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'WebBrowser
@@ -68,22 +80,12 @@ Partial Class Form_BHbnetD2Loader
         'Button_rund2
         '
         Me.Button_rund2.Enabled = False
-        Me.Button_rund2.Location = New System.Drawing.Point(402, 608)
+        Me.Button_rund2.Location = New System.Drawing.Point(701, 551)
         Me.Button_rund2.Name = "Button_rund2"
         Me.Button_rund2.Size = New System.Drawing.Size(86, 23)
         Me.Button_rund2.TabIndex = 1
         Me.Button_rund2.Text = "检测更新中"
         Me.Button_rund2.UseVisualStyleBackColor = True
-        '
-        'CheckBox_high
-        '
-        Me.CheckBox_high.AutoSize = True
-        Me.CheckBox_high.Location = New System.Drawing.Point(114, 20)
-        Me.CheckBox_high.Name = "CheckBox_high"
-        Me.CheckBox_high.Size = New System.Drawing.Size(48, 16)
-        Me.CheckBox_high.TabIndex = 5
-        Me.CheckBox_high.Text = "高清"
-        Me.CheckBox_high.UseVisualStyleBackColor = True
         '
         'CheckBox_w
         '
@@ -108,7 +110,7 @@ Partial Class Form_BHbnetD2Loader
         'CheckBox_skiptobnet
         '
         Me.CheckBox_skiptobnet.AutoSize = True
-        Me.CheckBox_skiptobnet.Location = New System.Drawing.Point(168, 20)
+        Me.CheckBox_skiptobnet.Location = New System.Drawing.Point(114, 20)
         Me.CheckBox_skiptobnet.Name = "CheckBox_skiptobnet"
         Me.CheckBox_skiptobnet.Size = New System.Drawing.Size(96, 16)
         Me.CheckBox_skiptobnet.TabIndex = 8
@@ -117,14 +119,27 @@ Partial Class Form_BHbnetD2Loader
         '
         'GroupBox_locale
         '
+        Me.GroupBox_locale.Controls.Add(Me.RadioButton1)
         Me.GroupBox_locale.Controls.Add(Me.RadioButton_eng)
         Me.GroupBox_locale.Controls.Add(Me.RadioButton_chi)
-        Me.GroupBox_locale.Location = New System.Drawing.Point(12, 550)
+        Me.GroupBox_locale.Location = New System.Drawing.Point(12, 536)
         Me.GroupBox_locale.Name = "GroupBox_locale"
-        Me.GroupBox_locale.Size = New System.Drawing.Size(111, 52)
+        Me.GroupBox_locale.Size = New System.Drawing.Size(215, 49)
         Me.GroupBox_locale.TabIndex = 9
         Me.GroupBox_locale.TabStop = False
         Me.GroupBox_locale.Text = "语言"
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Enabled = False
+        Me.RadioButton1.Location = New System.Drawing.Point(136, 20)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(71, 16)
+        Me.RadioButton1.TabIndex = 2
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "繁体中文"
+        Me.RadioButton1.UseVisualStyleBackColor = True
         '
         'RadioButton_eng
         '
@@ -141,55 +156,54 @@ Partial Class Form_BHbnetD2Loader
         Me.RadioButton_chi.AutoSize = True
         Me.RadioButton_chi.Location = New System.Drawing.Point(59, 20)
         Me.RadioButton_chi.Name = "RadioButton_chi"
-        Me.RadioButton_chi.Size = New System.Drawing.Size(47, 16)
+        Me.RadioButton_chi.Size = New System.Drawing.Size(71, 16)
         Me.RadioButton_chi.TabIndex = 0
-        Me.RadioButton_chi.Text = "中文"
+        Me.RadioButton_chi.Text = "简体中文"
         Me.RadioButton_chi.UseVisualStyleBackColor = True
         '
         'GroupBox_canshu
         '
-        Me.GroupBox_canshu.Controls.Add(Me.CheckBox_map)
+        Me.GroupBox_canshu.Controls.Add(Me.CheckBox_hackmap)
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_skiptobnet)
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_ns)
-        Me.GroupBox_canshu.Controls.Add(Me.CheckBox_high)
         Me.GroupBox_canshu.Controls.Add(Me.CheckBox_w)
-        Me.GroupBox_canshu.Location = New System.Drawing.Point(129, 550)
+        Me.GroupBox_canshu.Location = New System.Drawing.Point(18, 591)
         Me.GroupBox_canshu.Name = "GroupBox_canshu"
-        Me.GroupBox_canshu.Size = New System.Drawing.Size(321, 52)
+        Me.GroupBox_canshu.Size = New System.Drawing.Size(267, 48)
         Me.GroupBox_canshu.TabIndex = 10
         Me.GroupBox_canshu.TabStop = False
-        Me.GroupBox_canshu.Text = "参数"
+        Me.GroupBox_canshu.Text = "游戏参数"
         '
-        'CheckBox_map
+        'CheckBox_hackmap
         '
-        Me.CheckBox_map.AutoSize = True
-        Me.CheckBox_map.Location = New System.Drawing.Point(270, 20)
-        Me.CheckBox_map.Name = "CheckBox_map"
-        Me.CheckBox_map.Size = New System.Drawing.Size(48, 16)
-        Me.CheckBox_map.TabIndex = 9
-        Me.CheckBox_map.Text = "插件"
-        Me.CheckBox_map.UseVisualStyleBackColor = True
+        Me.CheckBox_hackmap.AutoSize = True
+        Me.CheckBox_hackmap.Location = New System.Drawing.Point(217, 21)
+        Me.CheckBox_hackmap.Name = "CheckBox_hackmap"
+        Me.CheckBox_hackmap.Size = New System.Drawing.Size(48, 16)
+        Me.CheckBox_hackmap.TabIndex = 9
+        Me.CheckBox_hackmap.Text = "插件"
+        Me.CheckBox_hackmap.UseVisualStyleBackColor = True
         '
         'GroupBox_zidingyicanshu
         '
         Me.GroupBox_zidingyicanshu.Controls.Add(Me.TextBox_customVar)
-        Me.GroupBox_zidingyicanshu.Location = New System.Drawing.Point(456, 550)
+        Me.GroupBox_zidingyicanshu.Location = New System.Drawing.Point(475, 591)
         Me.GroupBox_zidingyicanshu.Name = "GroupBox_zidingyicanshu"
-        Me.GroupBox_zidingyicanshu.Size = New System.Drawing.Size(207, 52)
+        Me.GroupBox_zidingyicanshu.Size = New System.Drawing.Size(94, 48)
         Me.GroupBox_zidingyicanshu.TabIndex = 11
         Me.GroupBox_zidingyicanshu.TabStop = False
         Me.GroupBox_zidingyicanshu.Text = "自定义参数"
         '
         'TextBox_customVar
         '
-        Me.TextBox_customVar.Location = New System.Drawing.Point(6, 18)
+        Me.TextBox_customVar.Location = New System.Drawing.Point(6, 20)
         Me.TextBox_customVar.Name = "TextBox_customVar"
-        Me.TextBox_customVar.Size = New System.Drawing.Size(195, 21)
+        Me.TextBox_customVar.Size = New System.Drawing.Size(77, 21)
         Me.TextBox_customVar.TabIndex = 1
         '
         'Button_D2VidTst
         '
-        Me.Button_D2VidTst.Location = New System.Drawing.Point(669, 567)
+        Me.Button_D2VidTst.Location = New System.Drawing.Point(6, 18)
         Me.Button_D2VidTst.Name = "Button_D2VidTst"
         Me.Button_D2VidTst.Size = New System.Drawing.Size(75, 23)
         Me.Button_D2VidTst.TabIndex = 2
@@ -199,16 +213,16 @@ Partial Class Form_BHbnetD2Loader
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(771, 651)
+        Me.Label1.Location = New System.Drawing.Point(699, 627)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(101, 12)
+        Me.Label1.Size = New System.Drawing.Size(155, 12)
         Me.Label1.TabIndex = 12
-        Me.Label1.Text = "Ver 0.9 by yjfyy"
+        Me.Label1.Text = "引导器版本: 0.10 by yjfyy"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(337, 646)
+        Me.Label2.Location = New System.Drawing.Point(699, 583)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 12)
         Me.Label2.TabIndex = 14
@@ -217,7 +231,7 @@ Partial Class Form_BHbnetD2Loader
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(475, 646)
+        Me.Label3.Location = New System.Drawing.Point(699, 605)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(59, 12)
         Me.Label3.TabIndex = 15
@@ -226,7 +240,7 @@ Partial Class Form_BHbnetD2Loader
         'Label_l_version
         '
         Me.Label_l_version.AutoSize = True
-        Me.Label_l_version.Location = New System.Drawing.Point(400, 646)
+        Me.Label_l_version.Location = New System.Drawing.Point(764, 583)
         Me.Label_l_version.Name = "Label_l_version"
         Me.Label_l_version.Size = New System.Drawing.Size(11, 12)
         Me.Label_l_version.TabIndex = 16
@@ -235,7 +249,7 @@ Partial Class Form_BHbnetD2Loader
         'Label_r_version
         '
         Me.Label_r_version.AutoSize = True
-        Me.Label_r_version.Location = New System.Drawing.Point(540, 646)
+        Me.Label_r_version.Location = New System.Drawing.Point(764, 605)
         Me.Label_r_version.Name = "Label_r_version"
         Me.Label_r_version.Size = New System.Drawing.Size(11, 12)
         Me.Label_r_version.TabIndex = 17
@@ -243,7 +257,7 @@ Partial Class Form_BHbnetD2Loader
         '
         'Button_fixgame
         '
-        Me.Button_fixgame.Location = New System.Drawing.Point(750, 567)
+        Me.Button_fixgame.Location = New System.Drawing.Point(6, 70)
         Me.Button_fixgame.Name = "Button_fixgame"
         Me.Button_fixgame.Size = New System.Drawing.Size(75, 23)
         Me.Button_fixgame.TabIndex = 18
@@ -252,9 +266,9 @@ Partial Class Form_BHbnetD2Loader
         '
         'TextBox_command_fix
         '
-        Me.TextBox_command_fix.Location = New System.Drawing.Point(12, 639)
+        Me.TextBox_command_fix.Location = New System.Drawing.Point(0, 519)
         Me.TextBox_command_fix.Name = "TextBox_command_fix"
-        Me.TextBox_command_fix.Size = New System.Drawing.Size(267, 21)
+        Me.TextBox_command_fix.Size = New System.Drawing.Size(111, 21)
         Me.TextBox_command_fix.TabIndex = 19
         Me.TextBox_command_fix.Visible = False
         '
@@ -263,27 +277,131 @@ Partial Class Form_BHbnetD2Loader
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
         '
+        'GroupBox_hackmap_cfg
+        '
+        Me.GroupBox_hackmap_cfg.Controls.Add(Me.RadioButton_hackmap_cfg_fram)
+        Me.GroupBox_hackmap_cfg.Controls.Add(Me.RadioButton_hackmap_cfg_plot)
+        Me.GroupBox_hackmap_cfg.Location = New System.Drawing.Point(291, 591)
+        Me.GroupBox_hackmap_cfg.Name = "GroupBox_hackmap_cfg"
+        Me.GroupBox_hackmap_cfg.Size = New System.Drawing.Size(178, 48)
+        Me.GroupBox_hackmap_cfg.TabIndex = 2
+        Me.GroupBox_hackmap_cfg.TabStop = False
+        Me.GroupBox_hackmap_cfg.Text = "插件选项"
+        '
+        'RadioButton_hackmap_cfg_fram
+        '
+        Me.RadioButton_hackmap_cfg_fram.AutoSize = True
+        Me.RadioButton_hackmap_cfg_fram.Location = New System.Drawing.Point(92, 17)
+        Me.RadioButton_hackmap_cfg_fram.Name = "RadioButton_hackmap_cfg_fram"
+        Me.RadioButton_hackmap_cfg_fram.Size = New System.Drawing.Size(83, 16)
+        Me.RadioButton_hackmap_cfg_fram.TabIndex = 1
+        Me.RadioButton_hackmap_cfg_fram.TabStop = True
+        Me.RadioButton_hackmap_cfg_fram.Text = "我要刷刷刷"
+        Me.RadioButton_hackmap_cfg_fram.UseVisualStyleBackColor = True
+        '
+        'RadioButton_hackmap_cfg_plot
+        '
+        Me.RadioButton_hackmap_cfg_plot.AutoSize = True
+        Me.RadioButton_hackmap_cfg_plot.Location = New System.Drawing.Point(3, 17)
+        Me.RadioButton_hackmap_cfg_plot.Name = "RadioButton_hackmap_cfg_plot"
+        Me.RadioButton_hackmap_cfg_plot.Size = New System.Drawing.Size(83, 16)
+        Me.RadioButton_hackmap_cfg_plot.TabIndex = 0
+        Me.RadioButton_hackmap_cfg_plot.TabStop = True
+        Me.RadioButton_hackmap_cfg_plot.Text = "我要玩剧情"
+        Me.RadioButton_hackmap_cfg_plot.UseVisualStyleBackColor = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Button_D2VidTst)
+        Me.GroupBox2.Controls.Add(Me.Button_fixgame)
+        Me.GroupBox2.Location = New System.Drawing.Point(575, 537)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(94, 103)
+        Me.GroupBox2.TabIndex = 20
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "辅助工具"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.RadioButton_load_PlugY)
+        Me.GroupBox3.Controls.Add(Me.RadioButton_load_d2loader_high)
+        Me.GroupBox3.Controls.Add(Me.RadioButton_load_d2loader)
+        Me.GroupBox3.Controls.Add(Me.RadioButton_load_d2)
+        Me.GroupBox3.Location = New System.Drawing.Point(234, 537)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(321, 48)
+        Me.GroupBox3.TabIndex = 21
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "启动模式"
+        '
+        'RadioButton_load_PlugY
+        '
+        Me.RadioButton_load_PlugY.AutoSize = True
+        Me.RadioButton_load_PlugY.Enabled = False
+        Me.RadioButton_load_PlugY.Location = New System.Drawing.Point(229, 21)
+        Me.RadioButton_load_PlugY.Name = "RadioButton_load_PlugY"
+        Me.RadioButton_load_PlugY.Size = New System.Drawing.Size(83, 16)
+        Me.RadioButton_load_PlugY.TabIndex = 3
+        Me.RadioButton_load_PlugY.TabStop = True
+        Me.RadioButton_load_PlugY.Text = "单机大箱子"
+        Me.RadioButton_load_PlugY.UseVisualStyleBackColor = True
+        '
+        'RadioButton_load_d2loader_high
+        '
+        Me.RadioButton_load_d2loader_high.AutoSize = True
+        Me.RadioButton_load_d2loader_high.Location = New System.Drawing.Point(151, 21)
+        Me.RadioButton_load_d2loader_high.Name = "RadioButton_load_d2loader_high"
+        Me.RadioButton_load_d2loader_high.Size = New System.Drawing.Size(71, 16)
+        Me.RadioButton_load_d2loader_high.TabIndex = 2
+        Me.RadioButton_load_d2loader_high.TabStop = True
+        Me.RadioButton_load_d2loader_high.Text = "高分辨率"
+        Me.RadioButton_load_d2loader_high.UseVisualStyleBackColor = True
+        '
+        'RadioButton_load_d2loader
+        '
+        Me.RadioButton_load_d2loader.AutoSize = True
+        Me.RadioButton_load_d2loader.Location = New System.Drawing.Point(73, 21)
+        Me.RadioButton_load_d2loader.Name = "RadioButton_load_d2loader"
+        Me.RadioButton_load_d2loader.Size = New System.Drawing.Size(71, 16)
+        Me.RadioButton_load_d2loader.TabIndex = 1
+        Me.RadioButton_load_d2loader.TabStop = True
+        Me.RadioButton_load_d2loader.Text = "D2Loader"
+        Me.RadioButton_load_d2loader.UseVisualStyleBackColor = True
+        '
+        'RadioButton_load_d2
+        '
+        Me.RadioButton_load_d2.AutoSize = True
+        Me.RadioButton_load_d2.Location = New System.Drawing.Point(7, 21)
+        Me.RadioButton_load_d2.Name = "RadioButton_load_d2"
+        Me.RadioButton_load_d2.Size = New System.Drawing.Size(59, 16)
+        Me.RadioButton_load_d2.TabIndex = 0
+        Me.RadioButton_load_d2.TabStop = True
+        Me.RadioButton_load_d2.Text = "D2原版"
+        Me.RadioButton_load_d2.UseVisualStyleBackColor = True
+        '
         'Form_BHbnetD2Loader
         '
+        Me.AcceptButton = Me.Button_rund2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(884, 672)
-        Me.Controls.Add(Me.TextBox_command_fix)
-        Me.Controls.Add(Me.Button_fixgame)
+        Me.ClientSize = New System.Drawing.Size(884, 652)
+        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GroupBox_hackmap_cfg)
         Me.Controls.Add(Me.Label_r_version)
         Me.Controls.Add(Me.Label_l_version)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button_D2VidTst)
         Me.Controls.Add(Me.GroupBox_zidingyicanshu)
         Me.Controls.Add(Me.GroupBox_canshu)
         Me.Controls.Add(Me.GroupBox_locale)
         Me.Controls.Add(Me.Button_rund2)
         Me.Controls.Add(Me.WebBrowser)
+        Me.Controls.Add(Me.TextBox_command_fix)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(900, 710)
-        Me.MinimumSize = New System.Drawing.Size(900, 710)
+        Me.MaximumSize = New System.Drawing.Size(900, 690)
+        Me.MinimumSize = New System.Drawing.Size(900, 690)
         Me.Name = "Form_BHbnetD2Loader"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "BHbnetD2Loader"
@@ -293,6 +411,11 @@ Partial Class Form_BHbnetD2Loader
         Me.GroupBox_canshu.PerformLayout()
         Me.GroupBox_zidingyicanshu.ResumeLayout(False)
         Me.GroupBox_zidingyicanshu.PerformLayout()
+        Me.GroupBox_hackmap_cfg.ResumeLayout(False)
+        Me.GroupBox_hackmap_cfg.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -300,7 +423,6 @@ Partial Class Form_BHbnetD2Loader
 
     Friend WithEvents WebBrowser As WebBrowser
     Friend WithEvents Button_rund2 As Button
-    Friend WithEvents CheckBox_high As CheckBox
     Friend WithEvents CheckBox_w As CheckBox
     Friend WithEvents CheckBox_ns As CheckBox
     Friend WithEvents CheckBox_skiptobnet As CheckBox
@@ -318,6 +440,16 @@ Partial Class Form_BHbnetD2Loader
     Friend WithEvents Label_r_version As Label
     Friend WithEvents Button_fixgame As Button
     Friend WithEvents TextBox_command_fix As TextBox
-    Friend WithEvents CheckBox_map As CheckBox
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents GroupBox_hackmap_cfg As GroupBox
+    Friend WithEvents RadioButton_hackmap_cfg_fram As RadioButton
+    Friend WithEvents RadioButton_hackmap_cfg_plot As RadioButton
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents RadioButton_load_PlugY As RadioButton
+    Friend WithEvents RadioButton_load_d2loader_high As RadioButton
+    Friend WithEvents RadioButton_load_d2loader As RadioButton
+    Friend WithEvents RadioButton_load_d2 As RadioButton
+    Friend WithEvents CheckBox_hackmap As CheckBox
 End Class
