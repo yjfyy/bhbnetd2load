@@ -274,7 +274,6 @@ Partial Class Form_BHbnetD2Loader
         '
         'Timer1
         '
-        Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
         '
         'GroupBox_hackmap_cfg
@@ -440,7 +439,6 @@ Partial Class Form_BHbnetD2Loader
     Friend WithEvents Label_r_version As Label
     Friend WithEvents Button_fixgame As Button
     Friend WithEvents TextBox_command_fix As TextBox
-    Friend WithEvents Timer1 As Timer
     Friend WithEvents RadioButton1 As RadioButton
     Friend WithEvents GroupBox_hackmap_cfg As GroupBox
     Friend WithEvents RadioButton_hackmap_cfg_fram As RadioButton
@@ -452,4 +450,5 @@ Partial Class Form_BHbnetD2Loader
     Friend WithEvents RadioButton_load_d2loader As RadioButton
     Friend WithEvents RadioButton_load_d2 As RadioButton
     Friend WithEvents CheckBox_hackmap As CheckBox
+    Friend WithEvents Timer1 As Timer
 End Class
