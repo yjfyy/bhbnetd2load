@@ -187,6 +187,13 @@ Public Class Form_BHbnetD2Loader
             WriteINI("CFG", "skiptobnet", CheckBox_skiptobnet.Checked.ToString, path)
             WriteINI("CFG", "map", CheckBox_hackmap.Checked.ToString, path)
 
+            '插件选项
+            If RadioButton_hackmap_cfg_fram.Checked = True Then
+                WriteINI("CFG", "hackmap_cfg", "fram", path)
+            Else
+                WriteINI("CFG", "hackmap_cfg", "plot", path)
+            End If
+
             '自定义参数
             WriteINI("CFG", "customVar", TextBox_customVar.Text, path)
 
@@ -367,15 +374,16 @@ Public Class Form_BHbnetD2Loader
             CheckBox_hackmap.Checked = False
         Else
             CheckBox_hackmap.Enabled = True
+            'CheckBox_hackmap.Checked = True
         End If
 
         If CheckBox_hackmap.Checked = False Then
             GroupBox_hackmap_cfg.Enabled = False
-            RadioButton_hackmap_cfg_fram.Checked = False
-            RadioButton_hackmap_cfg_plot.Checked = False
+            'RadioButton_hackmap_cfg_fram.Checked = False
+            'RadioButton_hackmap_cfg_plot.Checked = False
         Else
             GroupBox_hackmap_cfg.Enabled = True
-            RadioButton_hackmap_cfg_plot.Checked = True
+            'RadioButton_hackmap_cfg_plot.Checked = True
         End If
     End Sub
 
