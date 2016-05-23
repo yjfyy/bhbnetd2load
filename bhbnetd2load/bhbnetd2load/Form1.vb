@@ -1,7 +1,7 @@
 ﻿
 Public Class Form_BHbnetD2Loader
     Public upsrc = "http://code.taobao.org/svn/BHBnet/trunk/updatafiles/"
-    Public url = "index.mht"
+    Public url = "\index.mht"
     '    Public frist_run = "Y"
     Private Sub BHbnetD2Loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '读取ini文件
@@ -322,16 +322,15 @@ Public Class Form_BHbnetD2Loader
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Timer1.Enabled = False
         Try
-            check_ver()
+            'MsgBox(Application.StartupPath + url)
+            WebBrowser.Url = New Uri(Application.StartupPath + url)
         Catch ex As Exception
+
         End Try
 
         Try
-            WebBrowser.Url = New Uri(Application.StartupPath + "/" + url)
-            'Timer1.Enabled = False
-            'MsgBox(WebBrowser.Url.ToString)
+            check_ver()
         Catch ex As Exception
-
         End Try
 
     End Sub

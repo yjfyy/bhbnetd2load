@@ -274,6 +274,7 @@ Partial Class Form_BHbnetD2Loader
         '
         'Timer1
         '
+        Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
         '
         'GroupBox_hackmap_cfg
