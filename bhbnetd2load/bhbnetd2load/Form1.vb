@@ -141,6 +141,8 @@ Public Class Form_BHbnetD2Loader
             D2RMRes = 16
         End If
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "D2RMRes", D2RMRes)
+
+        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "Resolution", 1)
         Try
             ' MsgBox(d2run_command)
             Try
