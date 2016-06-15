@@ -133,6 +133,14 @@ Public Class Form_BHbnetD2Loader
             End Try
         End If
 
+        '修改分辨率写入注册表
+        Dim D2RMRes As Integer
+        If RadioButton_800x600.Checked = True Then
+            D2RMRes = 13
+        Else
+            D2RMRes = 16
+        End If
+        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "D2RMRes", D2RMRes)
         Try
             ' MsgBox(d2run_command)
             Try
@@ -186,6 +194,13 @@ Public Class Form_BHbnetD2Loader
             WriteINI("CFG", "ns", CheckBox_ns.Checked.ToString, path)
             WriteINI("CFG", "skiptobnet", CheckBox_skiptobnet.Checked.ToString, path)
             WriteINI("CFG", "map", CheckBox_hackmap.Checked.ToString, path)
+
+            '分辨率
+            If RadioButton_800x600.Checked = True Then
+                WriteINI("CFG", "D2RMRes", "800X600", path)
+            Else
+                WriteINI("CFG", "D2RMRes", "1280X720", path)
+            End If
 
             '插件选项
             If RadioButton_hackmap_cfg_fram.Checked = True Then
@@ -269,6 +284,13 @@ Public Class Form_BHbnetD2Loader
             CheckBox_ns.Checked = GetINI("CFG", "ns", "False", path)
             CheckBox_skiptobnet.Checked = GetINI("CFG", "skiptobnet", "True", path)
             CheckBox_hackmap.Checked = GetINI("CFG", "hackmap", "True", path)
+
+            '分辨率
+            If GetINI("CFG", "D2RMRes", "800X600", path) = "800X600" Then
+                RadioButton_800x600.Checked = True
+            Else
+                RadioButton_1280x720.Checked = True
+            End If
 
             '插件选项
             If GetINI("CFG", "hackmap_cfg", "plot", path) = "plot" Then
@@ -393,5 +415,21 @@ Public Class Form_BHbnetD2Loader
 
     Private Sub CheckBox_hackmap_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox_hackmap.CheckedChanged
         kongjianzhuangtai()
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub Label_l_version_Click(sender As Object, e As EventArgs) Handles Label_l_version.Click
+
+    End Sub
+
+    Private Sub Label_r_version_Click(sender As Object, e As EventArgs) Handles Label_r_version.Click
+
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
     End Sub
 End Class

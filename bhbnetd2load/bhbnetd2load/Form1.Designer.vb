@@ -55,12 +55,16 @@ Partial Class Form_BHbnetD2Loader
         Me.RadioButton_load_d2loader_high = New System.Windows.Forms.RadioButton()
         Me.RadioButton_load_d2loader = New System.Windows.Forms.RadioButton()
         Me.RadioButton_load_d2 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton_800x600 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton_1280x720 = New System.Windows.Forms.RadioButton()
         Me.GroupBox_locale.SuspendLayout()
         Me.GroupBox_canshu.SuspendLayout()
         Me.GroupBox_zidingyicanshu.SuspendLayout()
         Me.GroupBox_hackmap_cfg.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'WebBrowser
@@ -80,7 +84,7 @@ Partial Class Form_BHbnetD2Loader
         'Button_rund2
         '
         Me.Button_rund2.Enabled = False
-        Me.Button_rund2.Location = New System.Drawing.Point(701, 551)
+        Me.Button_rund2.Location = New System.Drawing.Point(781, 553)
         Me.Button_rund2.Name = "Button_rund2"
         Me.Button_rund2.Size = New System.Drawing.Size(86, 23)
         Me.Button_rund2.TabIndex = 1
@@ -213,16 +217,16 @@ Partial Class Form_BHbnetD2Loader
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(699, 627)
+        Me.Label1.Location = New System.Drawing.Point(795, 625)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(155, 12)
+        Me.Label1.Size = New System.Drawing.Size(83, 24)
         Me.Label1.TabIndex = 12
-        Me.Label1.Text = "引导器版本: 0.10 by yjfyy"
+        Me.Label1.Text = "引导器版本: " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.10 by yjfyy"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(699, 583)
+        Me.Label2.Location = New System.Drawing.Point(779, 580)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 12)
         Me.Label2.TabIndex = 14
@@ -231,7 +235,7 @@ Partial Class Form_BHbnetD2Loader
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(699, 605)
+        Me.Label3.Location = New System.Drawing.Point(779, 599)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(59, 12)
         Me.Label3.TabIndex = 15
@@ -240,7 +244,7 @@ Partial Class Form_BHbnetD2Loader
         'Label_l_version
         '
         Me.Label_l_version.AutoSize = True
-        Me.Label_l_version.Location = New System.Drawing.Point(764, 583)
+        Me.Label_l_version.Location = New System.Drawing.Point(843, 580)
         Me.Label_l_version.Name = "Label_l_version"
         Me.Label_l_version.Size = New System.Drawing.Size(11, 12)
         Me.Label_l_version.TabIndex = 16
@@ -249,7 +253,7 @@ Partial Class Form_BHbnetD2Loader
         'Label_r_version
         '
         Me.Label_r_version.AutoSize = True
-        Me.Label_r_version.Location = New System.Drawing.Point(764, 605)
+        Me.Label_r_version.Location = New System.Drawing.Point(843, 599)
         Me.Label_r_version.Name = "Label_r_version"
         Me.Label_r_version.Size = New System.Drawing.Size(11, 12)
         Me.Label_r_version.TabIndex = 17
@@ -257,7 +261,7 @@ Partial Class Form_BHbnetD2Loader
         '
         'Button_fixgame
         '
-        Me.Button_fixgame.Location = New System.Drawing.Point(6, 70)
+        Me.Button_fixgame.Location = New System.Drawing.Point(6, 60)
         Me.Button_fixgame.Name = "Button_fixgame"
         Me.Button_fixgame.Size = New System.Drawing.Size(75, 23)
         Me.Button_fixgame.TabIndex = 18
@@ -314,9 +318,9 @@ Partial Class Form_BHbnetD2Loader
         '
         Me.GroupBox2.Controls.Add(Me.Button_D2VidTst)
         Me.GroupBox2.Controls.Add(Me.Button_fixgame)
-        Me.GroupBox2.Location = New System.Drawing.Point(575, 537)
+        Me.GroupBox2.Location = New System.Drawing.Point(675, 540)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(94, 103)
+        Me.GroupBox2.Size = New System.Drawing.Size(94, 99)
         Me.GroupBox2.TabIndex = 20
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "辅助工具"
@@ -379,11 +383,45 @@ Partial Class Form_BHbnetD2Loader
         Me.RadioButton_load_d2.Text = "D2原版"
         Me.RadioButton_load_d2.UseVisualStyleBackColor = True
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.RadioButton_1280x720)
+        Me.GroupBox1.Controls.Add(Me.RadioButton_800x600)
+        Me.GroupBox1.Location = New System.Drawing.Point(575, 540)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(94, 99)
+        Me.GroupBox1.TabIndex = 22
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "分辨率"
+        '
+        'RadioButton_800x600
+        '
+        Me.RadioButton_800x600.AutoSize = True
+        Me.RadioButton_800x600.Location = New System.Drawing.Point(6, 20)
+        Me.RadioButton_800x600.Name = "RadioButton_800x600"
+        Me.RadioButton_800x600.Size = New System.Drawing.Size(65, 16)
+        Me.RadioButton_800x600.TabIndex = 0
+        Me.RadioButton_800x600.Text = "800X600"
+        Me.RadioButton_800x600.UseVisualStyleBackColor = True
+        '
+        'RadioButton_1280x720
+        '
+        Me.RadioButton_1280x720.AutoSize = True
+        Me.RadioButton_1280x720.Checked = True
+        Me.RadioButton_1280x720.Location = New System.Drawing.Point(6, 42)
+        Me.RadioButton_1280x720.Name = "RadioButton_1280x720"
+        Me.RadioButton_1280x720.Size = New System.Drawing.Size(71, 16)
+        Me.RadioButton_1280x720.TabIndex = 1
+        Me.RadioButton_1280x720.TabStop = True
+        Me.RadioButton_1280x720.Text = "1280X720"
+        Me.RadioButton_1280x720.UseVisualStyleBackColor = True
+        '
         'Form_BHbnetD2Loader
         '
         Me.AcceptButton = Me.Button_rund2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(884, 652)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox_hackmap_cfg)
@@ -416,6 +454,8 @@ Partial Class Form_BHbnetD2Loader
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -452,4 +492,7 @@ Partial Class Form_BHbnetD2Loader
     Friend WithEvents RadioButton_load_d2 As RadioButton
     Friend WithEvents CheckBox_hackmap As CheckBox
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents RadioButton_1280x720 As RadioButton
+    Friend WithEvents RadioButton_800x600 As RadioButton
 End Class
