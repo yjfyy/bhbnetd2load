@@ -137,10 +137,20 @@ Public Class Form_BHbnetD2Loader
         Dim D2RMRes As Integer
         If RadioButton_800x600.Checked = True Then
             D2RMRes = 13
-            My.Computer.FileSystem.CopyFile(Application.StartupPath + "/bh113map/d2hackmap.dll.800x600", Application.StartupPath + "/bh113map/d2hackmap.dll", True)
+            Try
+                My.Computer.FileSystem.CopyFile(Application.StartupPath + "/bh113map/d2hackmap.dll.800x600", Application.StartupPath + "/bh113map/d2hackmap.dll", True)
+            Catch ex As Exception
+
+            End Try
+
         Else
             D2RMRes = 16
-            My.Computer.FileSystem.CopyFile(Application.StartupPath + "/bh113map/d2hackmap.dll.1280x720", Application.StartupPath + "/bh113map/d2hackmap.dll", True)
+            Try
+                My.Computer.FileSystem.CopyFile(Application.StartupPath + "/bh113map/d2hackmap.dll.1280x720", Application.StartupPath + "/bh113map/d2hackmap.dll", True)
+            Catch ex As Exception
+
+            End Try
+
         End If
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "D2RMRes", D2RMRes)
         '原始暗黑默认分辨率800x600
