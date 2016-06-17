@@ -133,15 +133,17 @@ Public Class Form_BHbnetD2Loader
             End Try
         End If
 
-        '修改分辨率写入注册表
+        '修改分辨率写入注册表,并修改maphack相应的dll文件
         Dim D2RMRes As Integer
         If RadioButton_800x600.Checked = True Then
             D2RMRes = 13
+            My.Computer.FileSystem.CopyFile(Application.StartupPath + "/bh113map/d2hackmap.dll.800x600", Application.StartupPath + "/bh113map/d2hackmap.dll", True)
         Else
             D2RMRes = 16
+            My.Computer.FileSystem.CopyFile(Application.StartupPath + "/bh113map/d2hackmap.dll.1280x720", Application.StartupPath + "/bh113map/d2hackmap.dll", True)
         End If
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "D2RMRes", D2RMRes)
-
+        '原始暗黑默认分辨率800x600
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "Resolution", 1)
         Try
             ' MsgBox(d2run_command)

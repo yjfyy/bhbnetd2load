@@ -56,8 +56,8 @@ Partial Class Form_BHbnetD2Loader
         Me.RadioButton_load_d2loader = New System.Windows.Forms.RadioButton()
         Me.RadioButton_load_d2 = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton_800x600 = New System.Windows.Forms.RadioButton()
         Me.RadioButton_1280x720 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton_800x600 = New System.Windows.Forms.RadioButton()
         Me.GroupBox_locale.SuspendLayout()
         Me.GroupBox_canshu.SuspendLayout()
         Me.GroupBox_zidingyicanshu.SuspendLayout()
@@ -221,7 +221,7 @@ Partial Class Form_BHbnetD2Loader
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(83, 24)
         Me.Label1.TabIndex = 12
-        Me.Label1.Text = "引导器版本: " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.10 by yjfyy"
+        Me.Label1.Text = "引导器版本: " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.11 by yjfyy"
         '
         'Label2
         '
@@ -394,16 +394,6 @@ Partial Class Form_BHbnetD2Loader
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "分辨率"
         '
-        'RadioButton_800x600
-        '
-        Me.RadioButton_800x600.AutoSize = True
-        Me.RadioButton_800x600.Location = New System.Drawing.Point(6, 20)
-        Me.RadioButton_800x600.Name = "RadioButton_800x600"
-        Me.RadioButton_800x600.Size = New System.Drawing.Size(65, 16)
-        Me.RadioButton_800x600.TabIndex = 0
-        Me.RadioButton_800x600.Text = "800X600"
-        Me.RadioButton_800x600.UseVisualStyleBackColor = True
-        '
         'RadioButton_1280x720
         '
         Me.RadioButton_1280x720.AutoSize = True
@@ -415,6 +405,16 @@ Partial Class Form_BHbnetD2Loader
         Me.RadioButton_1280x720.TabStop = True
         Me.RadioButton_1280x720.Text = "1280X720"
         Me.RadioButton_1280x720.UseVisualStyleBackColor = True
+        '
+        'RadioButton_800x600
+        '
+        Me.RadioButton_800x600.AutoSize = True
+        Me.RadioButton_800x600.Location = New System.Drawing.Point(6, 20)
+        Me.RadioButton_800x600.Name = "RadioButton_800x600"
+        Me.RadioButton_800x600.Size = New System.Drawing.Size(65, 16)
+        Me.RadioButton_800x600.TabIndex = 0
+        Me.RadioButton_800x600.Text = "800X600"
+        Me.RadioButton_800x600.UseVisualStyleBackColor = True
         '
         'Form_BHbnetD2Loader
         '
