@@ -1,6 +1,7 @@
 ﻿
 Public Class Form_BHbnetD2Loader
-    Public upsrc = "http://code.taobao.org/svn/BHBnet/trunk/updatafiles/"
+    'Public upsrc = "http://code.taobao.org/svn/BHBnet/trunk/updatafiles/"
+    Public upsrc = "http://butwhy.vicp.net:82/tuzi_updata/Diablo_II/"
     Public url = "\index.mht"
     '    Public frist_run = "Y"
     Private Sub BHbnetD2Loader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -157,13 +158,14 @@ Public Class Form_BHbnetD2Loader
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "Resolution", 1)
         Try
             ' MsgBox(d2run_command)
-            Try
-                My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", dFile.DownloadString("http://code.taobao.org/svn/BHBnet/trunk/ip/ip.txt"))
-            Catch ex As Exception
-                MsgBox（"获取战网ip失败，清重试"）
-                Exit Sub
-            End Try
-            Shell(d2run_command, AppWinStyle.NormalFocus, False)
+            'Try
+            'My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", dFile.DownloadString("http://code.taobao.org/svn/BHBnet/trunk/ip/ip.txt"))
+            'Catch ex As Exception
+            '   MsgBox（"获取战网ip失败，清重试"）
+            '  Exit Sub
+            'End Try
+            'Shell(d2run_command, AppWinStyle.NormalFocus, False)
+            MsgBox(d2run_command)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

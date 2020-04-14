@@ -15,7 +15,8 @@ Public Class Form1
         Return Microsoft.VisualBasic.Left(Str, InStr(Str, Chr(0)) - 1)
     End Function
 
-    Public upsrc = "http://code.taobao.org/svn/BHBnet/trunk/updatafiles/"
+    'Public upsrc = "http://code.taobao.org/svn/BHBnet/trunk/updatafiles/"
+    Public upsrc = "http://butwhy.vicp.net:82/tuzi_updata/Diablo_II/"
 
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Try

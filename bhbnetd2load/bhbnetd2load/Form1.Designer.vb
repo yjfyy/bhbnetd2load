@@ -38,7 +38,6 @@ Partial Class Form_BHbnetD2Loader
         Me.GroupBox_zidingyicanshu = New System.Windows.Forms.GroupBox()
         Me.TextBox_customVar = New System.Windows.Forms.TextBox()
         Me.Button_D2VidTst = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label_l_version = New System.Windows.Forms.Label()
@@ -84,7 +83,7 @@ Partial Class Form_BHbnetD2Loader
         'Button_rund2
         '
         Me.Button_rund2.Enabled = False
-        Me.Button_rund2.Location = New System.Drawing.Point(781, 553)
+        Me.Button_rund2.Location = New System.Drawing.Point(782, 555)
         Me.Button_rund2.Name = "Button_rund2"
         Me.Button_rund2.Size = New System.Drawing.Size(86, 23)
         Me.Button_rund2.TabIndex = 1
@@ -214,19 +213,10 @@ Partial Class Form_BHbnetD2Loader
         Me.Button_D2VidTst.Text = "测试显卡"
         Me.Button_D2VidTst.UseVisualStyleBackColor = True
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(795, 625)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(83, 24)
-        Me.Label1.TabIndex = 12
-        Me.Label1.Text = "引导器版本: " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "0.11 by yjfyy"
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(779, 580)
+        Me.Label2.Location = New System.Drawing.Point(779, 596)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 12)
         Me.Label2.TabIndex = 14
@@ -235,7 +225,7 @@ Partial Class Form_BHbnetD2Loader
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(779, 599)
+        Me.Label3.Location = New System.Drawing.Point(779, 619)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(59, 12)
         Me.Label3.TabIndex = 15
@@ -244,7 +234,7 @@ Partial Class Form_BHbnetD2Loader
         'Label_l_version
         '
         Me.Label_l_version.AutoSize = True
-        Me.Label_l_version.Location = New System.Drawing.Point(843, 580)
+        Me.Label_l_version.Location = New System.Drawing.Point(843, 596)
         Me.Label_l_version.Name = "Label_l_version"
         Me.Label_l_version.Size = New System.Drawing.Size(11, 12)
         Me.Label_l_version.TabIndex = 16
@@ -253,7 +243,7 @@ Partial Class Form_BHbnetD2Loader
         'Label_r_version
         '
         Me.Label_r_version.AutoSize = True
-        Me.Label_r_version.Location = New System.Drawing.Point(843, 599)
+        Me.Label_r_version.Location = New System.Drawing.Point(843, 619)
         Me.Label_r_version.Name = "Label_r_version"
         Me.Label_r_version.Size = New System.Drawing.Size(11, 12)
         Me.Label_r_version.TabIndex = 17
@@ -270,7 +260,7 @@ Partial Class Form_BHbnetD2Loader
         '
         'TextBox_command_fix
         '
-        Me.TextBox_command_fix.Location = New System.Drawing.Point(0, 519)
+        Me.TextBox_command_fix.Location = New System.Drawing.Point(775, 528)
         Me.TextBox_command_fix.Name = "TextBox_command_fix"
         Me.TextBox_command_fix.Size = New System.Drawing.Size(111, 21)
         Me.TextBox_command_fix.TabIndex = 19
@@ -420,22 +410,21 @@ Partial Class Form_BHbnetD2Loader
         '
         Me.AcceptButton = Me.Button_rund2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(884, 652)
+        Me.ClientSize = New System.Drawing.Size(884, 651)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox_hackmap_cfg)
+        Me.Controls.Add(Me.TextBox_command_fix)
         Me.Controls.Add(Me.Label_r_version)
         Me.Controls.Add(Me.Label_l_version)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox_zidingyicanshu)
         Me.Controls.Add(Me.GroupBox_canshu)
         Me.Controls.Add(Me.GroupBox_locale)
         Me.Controls.Add(Me.Button_rund2)
         Me.Controls.Add(Me.WebBrowser)
-        Me.Controls.Add(Me.TextBox_command_fix)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(900, 690)
@@ -473,7 +462,6 @@ Partial Class Form_BHbnetD2Loader
     Friend WithEvents GroupBox_zidingyicanshu As GroupBox
     Friend WithEvents TextBox_customVar As TextBox
     Friend WithEvents Button_D2VidTst As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label_l_version As Label
