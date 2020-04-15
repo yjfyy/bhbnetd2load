@@ -55,7 +55,7 @@ Partial Class Form1
         Me.Label_l_version.Name = "Label_l_version"
         Me.Label_l_version.Size = New System.Drawing.Size(23, 12)
         Me.Label_l_version.TabIndex = 1
-        Me.Label_l_version.Text = "0.1"
+        Me.Label_l_version.Text = "0.2"
         '
         'Label_r_version
         '

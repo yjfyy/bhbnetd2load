@@ -8,15 +8,39 @@ Public Class Form1
     Dim r_version
     Dim up_root = "http://butwhy.vicp.net:82/tuzi_updata/Diablo_II/"
     Dim app_path As String = Application.StartupPath()
+
+    Public Function GetINI(ByVal Section As String, ByVal AppName As String, ByVal lpDefault As String, ByVal FileName As String) As String
+        Dim Str As String = LSet(Str, 256)
+        GetPrivateProfileString(Section, AppName, lpDefault, Str, Len(Str), FileName)
+        Return Microsoft.VisualBasic.Left(Str, InStr(Str, Chr(0)) - 1)
+    End Function
+
+    '写ini文件操作
+    Public Function WriteINI(ByVal Section As String, ByVal AppName As String, ByVal lpDefault As String, ByVal FileName As String) As Long
+        WriteINI = WritePrivateProfileString(Section, AppName, lpDefault, FileName)
+    End Function
+
+    '读ini API函数
+    Private Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Int32, ByVal lpFileName As String) As Int32
+
+    '写ini API函数
+    Private Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpString As String, ByVal lpFileName As String) As Int32
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers", app_path & "\D2Loader-1.13c.exe", "~ WINXPSP3")
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers", app_path & "\D2VidTst.exe", "~ DWM8And16BitMitigation RUNASADMIN WIN7RTM")
         My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "Resolution", "1")
+        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "LVL_REST", "666")
+        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "MAX_PLAYER", "8")
+        loadcfg()
+        deltemp()
         Label_status.Text = "正在检测更新......"
         BackgroundWorker_check_ver.RunWorkerAsync()
     End Sub
 
-
+    Private Sub Form1_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        savecfg()
+    End Sub
 
     Private Sub BackgroundWorker_check_ver_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundWorker_check_ver.DoWork
         Dim dFile As New System.Net.WebClient
@@ -49,6 +73,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button_run_game_Click(sender As Object, e As EventArgs) Handles Button_run_game.Click
+        savecfg()
         If Button_run_game.Text = "更新" Then
             Up_autoupdata()
         Else
@@ -59,13 +84,13 @@ Public Class Form1
                 canshu = "-locale chi -skiptobnet -pdir bh113map -direct -nofixaspect -nohide -txt"
             End If
             My.Computer.Registry.SetValue("HKEY_CURRENT_USER\Software\Blizzard Entertainment\Diablo II", "BnetIP", "butwhy.vicp.net")
-                Dim p = New System.Diagnostics.Process()
-                p.StartInfo.WorkingDirectory = app_path
-                p.StartInfo.FileName = "D2Loader-1.13c.exe"
+            Dim p = New System.Diagnostics.Process()
+            p.StartInfo.WorkingDirectory = app_path
+            p.StartInfo.FileName = "D2Loader-1.13c.exe"
             p.StartInfo.Arguments = canshu
             p.Start()
-                'Shell("d2loader-1.13c.exe -locale chi -w")
-            End If
+            'Shell("d2loader-1.13c.exe -locale chi -w")
+        End If
 
 
     End Sub
@@ -108,4 +133,30 @@ Public Class Form1
         p.StartInfo.FileName = "D2VidTst.exe"
         p.Start()
     End Sub
+    Private Sub savecfg()
+        If CheckBox_w.Checked = True Then
+            WriteINI("通用", "windows", "1", app_path & "/bhd2cfg.ini")
+        Else
+            WriteINI("通用", "windows", "0", app_path & "/bhd2cfg.ini")
+        End If
+    End Sub
+    Private Sub loadcfg()
+        If GetINI("通用", "windows", "1", app_path & "/bhd2cfg.ini") = "1" Then
+            CheckBox_w.Checked = 1
+        Else
+            CheckBox_w.Checked = 0
+        End If
+    End Sub
+    Private Sub deltemp()
+        Try
+            My.Computer.FileSystem.DeleteFile("up_com.bat")
+        Catch ex As Exception
+        End Try
+        Try
+            My.Computer.FileSystem.DeleteFile("up_data.exe")
+        Catch ex As Exception
+        End Try
+    End Sub
+
+
 End Class
